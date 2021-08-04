@@ -35,7 +35,15 @@
         <p class="information" *ngIf="myHotelData.data.hotelAdditionalText==''">
             Hotel hasn't added any additional text
         </p>
-        <button (click)="checkHotel()" class="btn btn-primary">Check Hotel</button>
+        <div class="bottom">
+            <div class="leftBottom">
+                <button (click)="checkHotel()" class="btn btn-primary">Check Hotel</button>
+            </div>
+            <div class="rigthBottom">
+                <p>Phone number: {{myHotelData.data.hotelPhoneNumber}}</p>
+                <p>Email address : {{myHotelData.data.hotelAddress}}</p>
+            </div>
+        </div>
     </div>
     <div class="product-image">
         <img [src]="mainImage">
