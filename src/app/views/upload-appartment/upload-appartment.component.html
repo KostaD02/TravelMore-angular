@@ -1,0 +1,151 @@
+<app-side-bar></app-side-bar>
+<section class="content-container">
+    <div class="content">
+        <form #myForm="ngForm">
+            <aside class="left">
+                <div class="top" id="mainPhoto">
+                    <img src="https://cdn.dribbble.com/users/2760451/screenshots/5656895/cloud-upload.gif">
+                </div>
+                <div class="bottom">
+                    <div class="carusel">
+                        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" id="innerImages">
+
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="uploadPhoto">
+                    <p>Your first uploaded picture will be main photo of hotel</p>
+                    <p>Also you can upload 5 additional photo of hotel</p>
+                    <p id="leftNumer">5 Additional photo left to upload</p>
+                    <button class="btn btn-info" (click)="uploadPhoto()">Upload photo</button>
+                </div>
+            </aside>
+            <aside class="rigth">
+                <div class="header">
+                    <div class="textWithButton">
+                        <h2>Upload your appartment at travelmore</h2>
+                    </div>
+                </div>
+                <div class="topForm">
+                    <div class="form-group makeDown">
+                        <label class="form-label">Hotel name</label>
+                        <input ngModel type="text" name="hotelName" placeholder="Enter your hotel name"
+                            class="form-control" required pattern="[a-zA-Z ]+">
+                        <label class="form-label">Hotel address</label>
+                        <input ngModel type="text" name="hotelAddress" placeholder="Enter your hotel address"
+                            class="form-control" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                        <label class="form-label">Hotel phone number</label>
+                        <input ngModel type="text" name="hotelPhoneNumber" placeholder="Enter your hotel phone number"
+                            class="form-control" required pattern="^[0-9]+[0-15]*$">
+                    </div>
+                </div>
+                <div class="bottomForm">
+                    <div class="checkBoxes">
+                        <div class="topLeft">
+                            <div class="form-check first">
+                                <input class="form-check-input" type="checkbox" name="hotelParking" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-parking"></i>Parking place</label>
+                            </div>
+                            <div class="form-check first">
+                                <input class="form-check-input" type="checkbox" name="hotelDisabledPeople" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-wheelchair"></i>Parking place</label>
+                            </div>
+                        </div>
+                        <div class="topRigth">
+                            <div class="container">
+                                <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+                                    <input type="radio" ngModel id="star5" name="rating" value="5" /><label
+                                        for="star5"></label>
+                                    <input type="radio" ngModel id="star4" name="rating" value="4" /><label
+                                        for="star4"></label>
+                                    <input type="radio" ngModel id="star3" name="rating" value="3" /><label
+                                        for="star3"></label>
+                                    <input type="radio" ngModel id="star2" name="rating" value="2" /><label
+                                        for="star2"></label>
+                                    <input type="radio" ngModel id="star1" name="rating" value="1" /><label
+                                        for="star1"></label>
+                                    <span>Rate your hotel </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottomBottom">
+                            <div class="form-check line ">
+                                <input class="form-check-input" type="checkbox" name="hotelCentralHeating" ngModel>
+                                <label lass="form-check-label">
+                                    <i class="fas fa-temperature-high"></i>Central heating
+                                </label>
+                            </div>
+                            <div class="form-check line ">
+                                <input class="form-check-input" type="checkbox" name="hotelRestaurant" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-utensils"></i>Restaurant</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelPlayGround" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-child"></i>Playground</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelKaraoke" ngModel>
+                                <label lass="form-check-label"><i class="fa fa-microphone-alt"></i>Karaoke</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelClub" ngModel>
+                                <label lass="form-check-label"><i class="fa fa-glass-martini-alt"></i>Club</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelLift" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-arrow-up"></i>Elevator</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelPublicPool" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-swimming-pool"></i>Public pool</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelPrivatePool" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-swimmer"></i>Private pool</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelPetOption" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-paw"></i>Pet friendly</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelConferanceRoom" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-handshake"></i>Conference room</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelGym" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-dumbbell"></i>Gym</label>
+                            </div>
+                            <div class="form-check line">
+                                <input class="form-check-input" type="checkbox" name="hotelTransport" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-bus"></i>Transport</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="textArea">
+                        <div class="form-group">
+                            <label for="textArea">Additional text</label>
+                            <textarea class="form-control" ngModel name="hotelAdditionalText" rows="5"
+                                placeholder="Enter text"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button *ngIf="secureUpload" [disabled]="!myForm.valid" (click)="uploadHotel(myForm)" class=" btn btn-primary
+                        col-md-12">Upload appartment</button>
+                </div>
+            </aside>
+        </form>
+    </div>
+</section>

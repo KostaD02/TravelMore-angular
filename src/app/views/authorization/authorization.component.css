@@ -1,0 +1,82 @@
+section {
+  background-image: url("http://stockbarter.com/public/frontend/images/pattern-icons/2.png");
+  min-height: 1100px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+}
+.close {
+  width: 100%;
+  display: inline-block;
+}
+span {
+  font-size: 70px;
+  float: right;
+  margin-top: 100px;
+  color: #0d6efd;
+  margin-right: calc(15% - 100px);
+}
+.LOGIN {
+  width: 900px;
+  margin: auto;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 3%;
+  min-height: 400px;
+}
+h2 {
+  color: #2574a9;
+  font-weight: 400;
+}
+p {
+  font-weight: 600;
+}
+.login {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a {
+  margin-right: 30px;
+  color: #2574a9 !important;
+  text-decoration: none;
+}
+a:hover {
+  border-bottom: 1px solid #2574a9;
+  padding-bottom: 5px;
+}
+.left {
+  width: 45%;
+  display: inline-block;
+  height: 100%;
+  border-right: 1px solid #2574a9;
+  padding: 10px;
+}
+.formAuthorization {
+  float: right;
+  width: 50%;
+  height: 100%;
+}
+.left h2 {
+  margin-top: 80px;
+}
+.left .makeDown {
+  margin-bottom: 100px;
+  text-align: center;
+}
+.login {
+  margin-top: 105px;
+}
+.input-group-text {
+  margin-top: 10px !important;
+  min-height: 38px;
+}

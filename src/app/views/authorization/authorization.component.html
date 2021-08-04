@@ -1,0 +1,29 @@
+<section>
+    <div class="close">
+        <span routerLink=""><i class="fas fa-times"></i></span>
+    </div>
+    <aside class="LOGIN">
+        <div class="left">
+            <h2>TravelMore</h2>
+            <p>Travelmore site are helping <br> to upload or rent appartment</p>
+            <div class="makeDown">
+                <a routerLink="/help">Restore password</a>
+                <button class="btn btn-success" routerLink="register">Create account</button>
+            </div>
+        </div>
+        <div class="formAuthorization">
+            <div class="login">
+                <input type="text" class="form-control" placeholder="Enter your email" [(ngModel)]="userEmail">
+                <div class="input-group mb-2 goingDown">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text" (click)="visible()" id="eye"><i class="far fa-eye-slash"></i>
+                        </div>
+                    </div>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password"
+                        [(ngModel)]="userPassword">
+                </div>
+                <button class="btn btn-primary col-md-12" (click)="logIn()">Log in</button>
+            </div>
+        </div>
+    </aside>
+</section>

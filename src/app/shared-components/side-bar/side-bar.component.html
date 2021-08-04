@@ -1,0 +1,103 @@
+<section class="sidebar-container">
+    <div class="sidebar-logo">
+        TravelMore
+    </div>
+    <ul class="sidebar-navigation">
+        <li class="header">Navigation</li>
+        <li>
+            <a routerLink="/">
+                <i class="fa fa-home" aria-hidden="true"></i> Homepage
+            </a>
+        </li>
+        <li *ngIf="userType=='admin'">
+            <a routerLink="/dashboard">
+                <i class="fa fa-tachometer-alt" aria-hidden="true"></i> Dashboard
+            </a>
+        </li>
+        <li *ngIf="userType=='hotel'">
+            <a routerLink="/upload">
+                <i class="fa fa-file-upload" aria-hidden="true"></i> Upload appartment
+            </a>
+        </li>
+        <li *ngIf="userType=='admin'">
+            <a routerLink="/upload">
+                <i class="fa fa-file-upload" aria-hidden="true"></i> Upload appartment
+            </a>
+        </li>
+        <li class="header">Information</li>
+        <li>
+            <a href="#">
+                <i class="fa fa-percent" aria-hidden="true"></i> Sale
+            </a>
+        </li>
+        <li>
+            <a (click)="socialMediaClick()">
+                <i class="fa fa-share-square" aria-hidden="true"></i> Social media
+            </a>
+        </li>
+        <li class="header Line">
+            <hr class="line">
+        </li>
+        <li class="header info">
+            <div class="photoUser">
+                <p *ngIf="myUser.img==''"><i class="far fa-user"></i></p>
+                <img [src]="myUser.img" *ngIf="myUser.img!=''">
+            </div>
+            <div class="personalInfo">
+                <p class="name">{{myUser.name}}</p>
+                <p class="lastName">{{myUser.lastname}}</p>
+                <p class="email">{{myUser.email}}</p>
+                <div *ngIf="myUser.type=='admin'">
+                    <p class="typeAdmin">{{myUser.type}}</p>
+                </div>
+                <div *ngIf="myUser.type=='hotel'">
+                    <p class="typeGuest">{{myUser.type}}</p>
+                </div>
+            </div>
+        </li>
+        <li class="header Line">
+            <hr class="line">
+        </li>
+        <li class="header">Authorization</li>
+        <li>
+            <a routerLink="/help">
+                <i class="fa fa-question" aria-hidden="true"></i> Help
+            </a>
+        </li>
+        <li *ngIf="userType=='admin'">
+            <a routerLink="/settings">
+                <i class="fa fa-cog" aria-hidden="true"></i> Settings
+            </a>
+        </li>
+        <li *ngIf="userType=='hotel'">
+            <a routerLink="/settings">
+                <i class="fa fa-cog" aria-hidden="true"></i> Settings
+            </a>
+        </li>
+        <li *ngIf="userType=='admin'" (click)="logOut()">
+            <a routerLink="/">
+                <i class="fa fa-sign-out-alt" aria-hidden="true"></i> Log out
+            </a>
+        </li>
+        <li *ngIf="userType=='hotel'" (click)="logOut()">
+            <a routerLink="/">
+                <i class="fa fa-sign-out-alt" aria-hidden="true"></i> Log out
+            </a>
+        </li>
+        <li *ngIf="userType=='guest'">
+            <a routerLink="/authorization/register">
+                <i class="fas fa-edit" aria-hidden="true"> </i> Register
+            </a>
+        </li>
+        <li *ngIf="userType=='guest'">
+            <a routerLink="/authorization">
+                <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Log in
+            </a>
+        </li>
+        <li class="header" *ngIf="userType=='guest'"><br></li>
+        <div class="copyright">
+            <p>Copyright ©2021 <br> All rights reserved</p>
+        </div>
+        <li class="header" *ngIf="userType=='guest'"><br></li>
+    </ul>
+</section>
