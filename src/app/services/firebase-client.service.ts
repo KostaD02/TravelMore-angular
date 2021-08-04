@@ -16,6 +16,11 @@ export class FirebaseClientService {
         return response;
       });
   }
+  getHotels(): Observable<any> {
+    return this.firebaseClient
+      .collection(environment.firebaseCollections.hotels)
+      .snapshotChanges();
+  }
   createHotel(hotel: any) {
     return this.firebaseClient
       .collection(environment.firebaseCollections.hotels)

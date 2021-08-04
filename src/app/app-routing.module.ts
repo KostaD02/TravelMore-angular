@@ -10,9 +10,11 @@ import { DashbordComponent } from './views/dashbord/dashbord.component';
 import { SettingsComponent } from './views/settings/settings.component';
 import { RegisterComponent } from './views/register/register.component';
 import { UploadAppartmentComponent } from './views/upload-appartment/upload-appartment.component';
+import { SaleComponent } from './views/sale/sale.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'apartments', component: ApartmentsComponent },
+  { path: 'sale', component: SaleComponent },
   { path: 'upload', component: UploadAppartmentComponent },
   { path: 'authorization', component: AuthorizationComponent },
   { path: 'authorization/register', component: RegisterComponent },
@@ -26,7 +28,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

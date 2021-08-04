@@ -1,6 +1,20 @@
 <app-side-bar></app-side-bar>
 <section class="content-container">
     <div class="content">
-        <p>Test homepage working</p>
+        <div class="search">
+            <form #mySearch="ngForm" class="search-bar" (ngSubmit)="search(mySearch)">
+                <input type="search" placeholder="Enter hotel name ..." ngModel name="search" pattern=".*\S.*" required>
+                <button class="search-btn">
+                    <span>Search</span>
+                </button>
+            </form>
+        </div>
+        <div class="hotels">
+            <div class="card-hotel" id="displayHotels">
+                <div *ngFor="let hotel of hotelsArray">
+                    <app-hotel [inputedHotel]="hotel"></app-hotel>
+                </div>
+            </div>
+        </div>
     </div>
 </section>

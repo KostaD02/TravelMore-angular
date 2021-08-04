@@ -1,0 +1,63 @@
+<div id="container">
+    <div class="product-details">
+        <h1>{{myHotelData.data.hotelName}}</h1>
+        <div *ngIf="myHotelData.data.rating==''">
+            <span style="color:black">Isn't not rated yet <i class="far fa-frown"></i> </span>
+        </div>
+        <div class="makeYellow" *ngIf="myHotelData.data.rating=='1'">
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <div class="makeYellow" *ngIf="myHotelData.data.rating=='2'">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <div class="makeYellow" *ngIf="myHotelData.data.rating=='3'">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <div class="makeYellow" *ngIf="myHotelData.data.rating=='4'">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <div class="makeYellow" *ngIf="myHotelData.data.rating=='5'">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <p class="information" *ngIf="myHotelData.data.hotelAdditionalText!==''">
+            {{myHotelData.data.hotelAdditionalText}}
+        </p>
+        <p class="information" *ngIf="myHotelData.data.hotelAdditionalText==''">
+            Hotel hasn't added any additional text
+        </p>
+        <button (click)="checkHotel()" class="btn btn-primary">Check Hotel</button>
+    </div>
+    <div class="product-image">
+        <img [src]="mainImage">
+        <div class="info">
+            <h2 class="gogingDown">Facilities:</h2>
+            <ul class="flexAuto">
+                <li *ngIf="myHotelData.data.hotelParking"><i class="fas fa-parking"></i>Parking place</li>
+                <li *ngIf="myHotelData.data.hotelDisabledPeople"><i class="fas fa-wheelchair"></i>Handicap place</li>
+                <li *ngIf="myHotelData.data.hotelCentralHeating"><i class="fas fa-temperature-high"></i>Central heating
+                </li>
+                <li *ngIf="myHotelData.data.hotelRestaurant"><i class="fas fa-utensils"></i>Restaurant</li>
+                <li *ngIf="myHotelData.data.hotelPlayGround"><i class="fas fa-child"></i>Playground</li>
+                <li *ngIf="myHotelData.data.hotelKaraoke"><i class="fa fa-microphone-alt"></i>Karaoke</li>
+                <li *ngIf="myHotelData.data.hotelClub"><i class="fa fa-glass-martini-alt"></i>Club</li>
+                <li *ngIf="myHotelData.data.hotelLift"><i class="fas fa-arrow-up"></i>Elevator</li>
+                <li *ngIf="myHotelData.data.hotelPublicPool"><i class="fas fa-swimming-pool"></i>Public pool</li>
+                <li *ngIf="myHotelData.data.hotelPrivatePool"><i class="fas fa-swimmer"></i>Private pool</li>
+                <li *ngIf="myHotelData.data.hotelPetOption"><i class="fas fa-paw"></i>Pet friendly</li>
+                <li *ngIf="myHotelData.data.hotelConferanceRoom"><i class="fas fa-handshake"></i>Conference hall</li>
+                <li *ngIf="myHotelData.data.hotelGym"><i class="fas fa-dumbbell"></i>Gym</li>
+                <li *ngIf="myHotelData.data.hotelTransport"><i class="fas fa-bus"></i>Transport</li>
+            </ul>
+        </div>
+    </div>
+</div>

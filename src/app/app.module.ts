@@ -20,6 +20,7 @@ import { DashbordComponent } from './views/dashbord/dashbord.component';
 import { RegisterComponent } from './views/register/register.component';
 import { UploadAppartmentComponent } from './views/upload-appartment/upload-appartment.component';
 import { SaleComponent } from './views/sale/sale.component';
+import { HotelComponent } from './views/home-page/hotel/hotel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { SaleComponent } from './views/sale/sale.component';
     RegisterComponent,
     UploadAppartmentComponent,
     SaleComponent,
+    HotelComponent,
   ],
   imports: [
     BrowserModule,

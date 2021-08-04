@@ -1,0 +1,62 @@
+.content-container {
+  padding-top: 20px;
+  padding-left: 220px;
+  background-image: url("http://stockbarter.com/public/frontend/images/pattern-icons/2.png");
+  min-height: 1100px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+}
+.content {
+  width: 1000px;
+  margin: 40px auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 20px;
+  background-color: white;
+  min-height: 800px;
+  border-radius: 2%;
+}
+.gifDiscount {
+  height: 200px;
+  width: 100%;
+  border-bottom: 1px solid #2574a9;
+}
+.gifDiscount img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.mainContent {
+  width: 100%;
+  height: 600px;
+}
+.left {
+  width: 49%;
+  height: 45%;
+  display: inline-block;
+  text-align: center;
+  padding-top: 100px;
+}
+.rigth {
+  width: 50%;
+  height: 45%;
+  float: right;
+  text-align: center;
+  padding-top: 100px;
+}
+.middle {
+  width: 100%;
+}
+.center {
+  text-align: center;
+}
+.bottom {
+  padding-top: 50px;
+}
+.mainContent h2 {
+  color: #2574a9;
+}
