@@ -1,5 +1,5 @@
 <section class="sidebar-container">
-    <div class="sidebar-logo">
+    <div class="sidebar-logo" routerLink="/">
         TravelMore
     </div>
     <ul class="sidebar-navigation">
@@ -46,7 +46,6 @@
             <div class="personalInfo">
                 <p class="name">{{myUser.name}}</p>
                 <p class="lastName">{{myUser.lastname}}</p>
-                <p class="email">{{myUser.email}}</p>
                 <div *ngIf="myUser.type=='admin'">
                     <p class="typeAdmin">{{myUser.type}}</p>
                 </div>

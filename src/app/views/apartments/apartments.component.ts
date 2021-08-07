@@ -73,7 +73,7 @@ export class ApartmentsComponent implements OnInit {
   }
   viewImage() {
     Swal.fire({
-      title: `<strong>${this.hotelName}</strong> main image`,
+      title: `<strong style="color:#2574a9">${this.hotelName}</strong> main image`,
       html: `<img  width="600" height="400" src="${this.currentHotel.images[0]}" alt="Coultn't open the image" style="object-fit: contain">`,
       width: 800,
     });

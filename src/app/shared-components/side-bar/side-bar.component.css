@@ -129,3 +129,20 @@ hr.line {
 .typeAdmin {
   color: red;
 }
+.sidebar-container::-webkit-scrollbar {
+  width: 1em;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+  background-color: #2574a9;
+  border-radius: 10px;
+}
+.sidebar-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.sidebar-container::-webkit-scrollbar-button {
+  height: 20px;
+}
+.line {
+  margin-left: 10px;
+}
