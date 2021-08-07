@@ -1,6 +1,30 @@
-<app-side-bar></app-side-bar>
-<section class="content-container">
-    <div class="content">
-        <p>Test appartemnts working</p>
-    </div>
-</section>
+<app-loader *ngIf="!loaded"></app-loader>
+<div *ngIf="loaded" class="loaded">
+    <app-side-bar></app-side-bar>
+    <section class="content-container">
+        <div class="content">
+            <div class="top">
+                <div *ngIf="currentHotel.images[0]!==''" class="backgroundWithText">
+                    <div class="overlayed" [ngStyle]="{'background-image': 'url(' + currentHotel.images[0] + ')'}">
+                        <h2>{{hotelName}}</h2>
+                        <div class="color-overlay"></div>
+                        <div class="button">
+                            <button class="btn btn-primary" (click)="viewImage()">Check full image</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="currentHotel.images[0]==''" class="backgroundWithOutText">
+                    <h2>{{hotelName}}</h2>
+                    <img src="https://cdn.iconscout.com/icon/free/png-512/no-image-1771002-1505134.png"
+                        alt="This hotel doesn't have any photo">
+                </div>
+            </div>
+            <div class="middle">
+                <h2>middle</h2>
+            </div>
+            <div class="bottom">
+                <h3>bottom</h3>
+            </div>
+        </div>
+    </section>
+</div>

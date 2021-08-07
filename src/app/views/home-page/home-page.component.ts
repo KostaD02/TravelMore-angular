@@ -17,10 +17,8 @@ export class HomePageComponent implements OnInit {
         this.hotelsArray.push(e.payload.doc.data());
       });
     });
-    console.log(this.hotelsArray);
   }
   search(form: NgForm) {
-    console.log(form.value);
     this.createHotel();
   }
 }

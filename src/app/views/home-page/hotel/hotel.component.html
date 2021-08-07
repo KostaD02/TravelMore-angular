@@ -37,7 +37,7 @@
         </p>
         <div class="bottom">
             <div class="leftBottom">
-                <button (click)="checkHotel()" class="btn btn-primary">Check Hotel</button>
+                <button [routerLink]="['/apartments',hotelName]" class="btn btn-primary">Check Hotel</button>
             </div>
             <div class="rigthBottom">
                 <p>Phone number: {{myHotelData.data.hotelPhoneNumber}}</p>

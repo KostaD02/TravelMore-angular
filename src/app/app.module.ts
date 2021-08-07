@@ -21,6 +21,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { UploadAppartmentComponent } from './views/upload-appartment/upload-appartment.component';
 import { SaleComponent } from './views/sale/sale.component';
 import { HotelComponent } from './views/home-page/hotel/hotel.component';
+import { LoaderComponent } from './shared-components/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { HotelComponent } from './views/home-page/hotel/hotel.component';
     UploadAppartmentComponent,
     SaleComponent,
     HotelComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

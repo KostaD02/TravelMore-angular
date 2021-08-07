@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 })
 export class SharedFuncService {
   constructor() {}
-  displayToast(text: string, Icon: string, color: string) {
+  displayToast(text: string, Icon: string, color: string, time: number = 1500) {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-right',
@@ -14,7 +14,7 @@ export class SharedFuncService {
         popup: 'colored-toast',
       },
       showConfirmButton: false,
-      timer: 1500,
+      timer: time,
       timerProgressBar: true,
     });
     Toast.fire({

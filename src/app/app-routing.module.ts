@@ -13,7 +13,7 @@ import { UploadAppartmentComponent } from './views/upload-appartment/upload-appa
 import { SaleComponent } from './views/sale/sale.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'apartments', component: ApartmentsComponent },
+  { path: 'apartments/:name', component: ApartmentsComponent },
   { path: 'sale', component: SaleComponent },
   { path: 'upload', component: UploadAppartmentComponent },
   { path: 'authorization', component: AuthorizationComponent },
