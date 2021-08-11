@@ -1,0 +1,185 @@
+<div *ngIf="!loaded">
+    <app-loader></app-loader>
+</div>
+<div *ngIf="loaded">
+    <app-side-bar></app-side-bar>
+    <section class="content-container">
+        <div class="content">
+            <form #myForm="ngForm">
+                <aside class="left">
+                    <div class="top" id="mainImage">
+                        <button class="btn btn-primary" (click)="ShowFullSize('0')">View image</button>
+                        <button class="btn btn-warning" (click)="SwitchImage('0')">Switch image</button>
+                    </div>
+                    <div class="bottom">
+                        <div class="photos first" id="first" *ngIf="greaterThan('1')">
+                            <button class="btn btn-primary" (click)="ShowFullSize('1')">View image</button>
+                            <button class="btn btn-warning" (click)="SwitchImage('1')">Switch image</button>
+                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
+                        </div>
+                        <div class="photos second" id="second" *ngIf="greaterThan('2')">
+                            <button class="btn btn-primary" (click)="ShowFullSize('2')">View image</button>
+                            <button class="btn btn-warning" (click)="SwitchImage('2')">Switch image</button>
+                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
+                        </div>
+                        <div class="photos third" id="third" *ngIf="greaterThan('3')">
+                            <button class="btn btn-primary" (click)="ShowFullSize('3')">View image</button>
+                            <button class="btn btn-warning" (click)="SwitchImage('3')">Switch image</button>
+                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
+                        </div>
+                        <div class="photos forth" id="forth" *ngIf="greaterThan('4')">
+                            <button class="btn btn-primary" (click)="ShowFullSize('4')">View image</button>
+                            <button class="btn btn-warning" (click)="SwitchImage('4')">Switch image</button>
+                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
+                        </div>
+                        <div class="photos fifth" id="fifth" *ngIf="greaterThan('5')">
+                            <button class="btn btn-primary" (click)="ShowFullSize('5')">View image</button>
+                            <button class="btn btn-warning" (click)="SwitchImage('5')">Switch image</button>
+                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
+                        </div>
+                    </div>
+                    <div class="add">
+                        <button class="btn btn-success" (click)="AddImage()">Add image</button>
+                    </div>
+                </aside>
+                <aside class="rigth">
+                    <div class="header">
+                        <div class="textWithButton">
+                            <h2>Edit your appartment at travelmore</h2>
+                        </div>
+                    </div>
+                    <div class="topForm">
+                        <div class="form-group makeDown">
+                            <label class="form-label">Hotel name</label>
+                            <input [(ngModel)]="currentHotel.data.hotelName" type="text" name="hotelName"
+                                placeholder="Enter your hotel name" class="form-control" required pattern="[a-zA-Z ]+">
+                            <label class="form-label">Hotel address</label>
+                            <input [(ngModel)]="currentHotel.data.hotelAddress" type="text" name="hotelAddress"
+                                placeholder="Enter your hotel address" class="form-control" required
+                                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                            <label class="form-label">Hotel phone number</label>
+                            <input [(ngModel)]="currentHotel.data.hotelPhoneNumber" type="text" name="hotelPhoneNumber"
+                                placeholder="Enter your hotel phone number" class="form-control" required
+                                pattern="^[0-9]+[0-15]*$">
+                            <label class="form-label">Hotel location</label>
+                            <input [(ngModel)]="currentHotel.data.hotelLocation" type="text" name="hotelLocation"
+                                placeholder="Enter your hotel location" class="form-control" required
+                                pattern="[a-zA-Z ]+">
+                        </div>
+                    </div>
+                    <div class="bottomForm">
+                        <div class="checkBoxes">
+                            <div class="topLeft">
+                                <div class="form-check first">
+                                    <input class="form-check-input" type="checkbox" name="hotelParking"
+                                        [(ngModel)]="currentHotel.data.hotelParking">
+                                    <label lass="form-check-label"><i class="fas fa-parking"></i>Parking place</label>
+                                </div>
+                                <div class="form-check first">
+                                    <input class="form-check-input" type="checkbox" name="hotelDisabledPeople"
+                                        [(ngModel)]="currentHotel.data.hotelDisabledPeople">
+                                    <label lass="form-check-label"><i class="fas fa-wheelchair"></i>Parking
+                                        place</label>
+                                </div>
+                            </div>
+                            <div class="topRigth">
+                                <div class="container">
+                                    <div class="starrating risingstar d-flex justify-content-center flex-row-reverse">
+                                        <input type="radio" [(ngModel)]="currentHotel.data.rating" id="star5"
+                                            name="rating" value="5" /><label for="star5"></label>
+                                        <input type="radio" [(ngModel)]="currentHotel.data.rating" id="star4"
+                                            name="rating" value="4" /><label for="star4"></label>
+                                        <input type="radio" [(ngModel)]="currentHotel.data.rating" id="star3"
+                                            name="rating" value="3" /><label for="star3"></label>
+                                        <input type="radio" [(ngModel)]="currentHotel.data.rating" id="star2"
+                                            name="rating" value="2" /><label for="star2"></label>
+                                        <input type="radio" [(ngModel)]="currentHotel.data.rating" id="star1"
+                                            name="rating" value="1" /><label for="star1"></label>
+                                        <span>Rate your hotel </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottomBottom">
+                                <div class="form-check line ">
+                                    <input class="form-check-input" type="checkbox" name="hotelCentralHeating"
+                                        [(ngModel)]="currentHotel.data.hotelCentralHeating">
+                                    <label lass="form-check-label">
+                                        <i class="fas fa-temperature-high"></i>Central heating
+                                    </label>
+                                </div>
+                                <div class="form-check line ">
+                                    <input class="form-check-input" type="checkbox" name="hotelRestaurant"
+                                        [(ngModel)]="currentHotel.data.hotelRestaurant">
+                                    <label lass="form-check-label"><i class="fas fa-utensils"></i>Restaurant</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelPlayGround"
+                                        [(ngModel)]="currentHotel.data.hotelPlayGround">
+                                    <label lass="form-check-label"><i class="fas fa-child"></i>Playground</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelKaraoke"
+                                        [(ngModel)]="currentHotel.data.hotelKaraoke">
+                                    <label lass="form-check-label"><i class="fa fa-microphone-alt"></i>Karaoke</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelClub"
+                                        [(ngModel)]="currentHotel.data.hotelClub">
+                                    <label lass="form-check-label"><i class="fa fa-glass-martini-alt"></i>Club</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelLift"
+                                        [(ngModel)]="currentHotel.data.hotelLift">
+                                    <label lass="form-check-label"><i class="fas fa-arrow-up"></i>Elevator</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelPublicPool"
+                                        [(ngModel)]="currentHotel.data.hotelPublicPool">
+                                    <label lass="form-check-label"><i class="fas fa-swimming-pool"></i>Public
+                                        pool</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelPrivatePool"
+                                        [(ngModel)]="currentHotel.data.hotelPrivatePool">
+                                    <label lass="form-check-label"><i class="fas fa-swimmer"></i>Private pool</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelPetOption"
+                                        [(ngModel)]="currentHotel.data.hotelPetOption">
+                                    <label lass="form-check-label"><i class="fas fa-paw"></i>Pet friendly</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelConferanceRoom"
+                                        [(ngModel)]="currentHotel.data.hotelConferanceRoom">
+                                    <label lass="form-check-label"><i class="fas fa-handshake"></i>Conference
+                                        room</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelGym"
+                                        [(ngModel)]="currentHotel.data.hotelGym">
+                                    <label lass="form-check-label"><i class="fas fa-dumbbell"></i>Gym</label>
+                                </div>
+                                <div class="form-check line">
+                                    <input class="form-check-input" type="checkbox" name="hotelTransport"
+                                        [(ngModel)]="currentHotel.data.hotelTransport">
+                                    <label lass="form-check-label"><i class="fas fa-bus"></i>Transport</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="textArea">
+                            <div class="form-group">
+                                <label for="textArea">Additional text</label>
+                                <textarea class="form-control" [(ngModel)]="currentHotel.data.hotelAdditionalText"
+                                    name="hotelAdditionalText" rows="5" placeholder="Enter text"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <button *ngIf="secureUpload" (click)="editHotel(myForm)" class=" btn btn-primary
+                            col-md-12">Upload appartment</button>
+                    </div>
+                </aside>
+            </form>
+        </div>
+    </section>
+</div>

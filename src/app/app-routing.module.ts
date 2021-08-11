@@ -11,9 +11,14 @@ import { SettingsComponent } from './views/settings/settings.component';
 import { RegisterComponent } from './views/register/register.component';
 import { UploadAppartmentComponent } from './views/upload-appartment/upload-appartment.component';
 import { SaleComponent } from './views/sale/sale.component';
+import { YourHotelsComponent } from './views/your-hotels/your-hotels.component';
+import { EditHotelComponent } from './views/your-hotels/my-hotel/edit-hotel/edit-hotel.component';
+
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'apartments/:name', component: ApartmentsComponent },
+  { path: 'apartments-edit/:name', component: EditHotelComponent },
+  { path: 'hotels', component: YourHotelsComponent },
   { path: 'sale', component: SaleComponent },
   { path: 'upload', component: UploadAppartmentComponent },
   { path: 'authorization', component: AuthorizationComponent },

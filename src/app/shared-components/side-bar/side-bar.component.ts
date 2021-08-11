@@ -57,7 +57,9 @@ export class SideBarComponent implements OnInit {
     });
   }
   logOut() {
-    window.localStorage.clear();
-    window.location.reload();
+    while (localStorage.length != 0) {
+      localStorage.clear();
+      window.location.reload();
+    }
   }
 }

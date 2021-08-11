@@ -38,6 +38,8 @@
         <div class="bottom">
             <div class="leftBottom">
                 <button [routerLink]="['/apartments',hotelName]" class="btn btn-primary">Check Hotel</button>
+                <button [routerLink]="['/apartments-edit',hotelName]" class="btn btn-warning">Edit Hotel</button>
+                <button class="btn btn-danger">Delete Hotel</button>
             </div>
             <div class="rigthBottom">
                 <p>Phone number: {{myHotelData.data.hotelPhoneNumber}}</p>

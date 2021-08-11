@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "Poppins", sans-serif;
+  padding-bottom: 100px;
 }
 .content {
   width: 1000px;
@@ -18,7 +19,7 @@
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   padding: 20px;
   background-color: white;
-  min-height: 800px;
+  min-height: 900px;
   border-radius: 2%;
 }
 form {
@@ -44,11 +45,7 @@ form {
 }
 .left .bottom {
   width: 100%;
-  height: 355px;
-}
-.left .uploadPhoto {
-  width: 100%;
-  height: 20%;
+  height: 1100px;
 }
 .rigth .header {
   width: 100%;
@@ -58,8 +55,10 @@ form {
   width: 100%;
 }
 .rigth .header .textWithButton h2 {
-  display: inline;
+  display: inline-block;
   font-size: 17px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .rigth .header .textWithButton button {
   margin-left: 10px;
@@ -69,18 +68,19 @@ form {
   margin-bottom: 10px;
 }
 .rigth .makeDown {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .rigth .bottomForm {
   border-top: 1px solid #2574a9;
+  padding-top: 50px;
 }
 .rigth .textArea {
-  margin-top: 30px;
+  margin-top: 60px;
 }
 .rigth textarea {
-  height: 150px;
-  min-height: 150px;
-  max-height: 150px;
+  height: 450px;
+  min-height: 450px;
+  max-height: 450px;
 }
 textarea::-webkit-scrollbar {
   width: 1em;
@@ -138,14 +138,12 @@ textarea::-webkit-scrollbar-thumb {
   width: 33%;
   display: inline-block;
 }
-.first {
-  width: 250px;
-}
+
 .checkBoxes {
   margin-top: 20px;
 }
 .button {
-  margin-top: 39px;
+  margin-top: 69px;
 }
 .carusel {
   margin-top: 50px;
@@ -156,4 +154,34 @@ input.ng-dirty.ng-invalid {
 }
 input.ng-dirty.ng-valid {
   box-shadow: green 0px 2px 10px !important;
+}
+#first,
+#second,
+#third,
+#forth,
+#fifth,
+#mainImage {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-between;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10%;
+}
+.bottom div {
+  height: 200px;
+  width: 100%;
+}
+.makeDown input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.add {
+  text-align: center;
 }

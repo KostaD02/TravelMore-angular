@@ -22,6 +22,9 @@ import { UploadAppartmentComponent } from './views/upload-appartment/upload-appa
 import { SaleComponent } from './views/sale/sale.component';
 import { HotelComponent } from './views/home-page/hotel/hotel.component';
 import { LoaderComponent } from './shared-components/loader/loader.component';
+import { YourHotelsComponent } from './views/your-hotels/your-hotels.component';
+import { MyHotelComponent } from './views/your-hotels/my-hotel/my-hotel.component';
+import { EditHotelComponent } from './views/your-hotels/my-hotel/edit-hotel/edit-hotel.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +42,9 @@ import { LoaderComponent } from './shared-components/loader/loader.component';
     SaleComponent,
     HotelComponent,
     LoaderComponent,
+    YourHotelsComponent,
+    MyHotelComponent,
+    EditHotelComponent,
   ],
   imports: [
     BrowserModule,

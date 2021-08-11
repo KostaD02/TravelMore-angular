@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-hotel',
-  templateUrl: './hotel.component.html',
-  styleUrls: ['./hotel.component.css'],
+  selector: 'app-my-hotel',
+  templateUrl: './my-hotel.component.html',
+  styleUrls: ['./my-hotel.component.css'],
 })
-export class HotelComponent implements OnInit {
+export class MyHotelComponent implements OnInit {
   @Input() inputedHotel = {};
   myHotelData!: any;
   mainImage: string = '';

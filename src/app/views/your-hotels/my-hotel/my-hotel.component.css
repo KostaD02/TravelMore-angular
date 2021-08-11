@@ -81,7 +81,7 @@
   margin-top: 30px;
   margin-left: 20px;
   margin-right: 20px;
-  min-height: 150px;
+  min-height: 120px;
 }
 .bottom {
   width: 100%;
@@ -101,7 +101,7 @@
   display: inline-block;
 }
 .bottom .leftBottom button {
-  margin-top: 33px;
+  margin-top: 5px;
 }
 .info {
   background: rgba(27, 26, 26, 0.9);
@@ -150,4 +150,10 @@
 }
 .makeYellow {
   color: yellow;
+}
+.rigthBottom {
+  margin-top: 20px;
+}
+.btn.btn-warning {
+  width: 121px;
 }

@@ -25,12 +25,15 @@ export class UploadAppartmentComponent implements OnInit {
     this.secureUpload = false;
     let hotel = {};
     let data = form.value;
+    let localstorage = localStorage.getItem('UsersArray');
+    let tempObj = JSON.parse(localstorage as any);
     data['hotelAddress'] = data.hotelAddress.toLowerCase();
     data['hotelName'] = data.hotelName.toLowerCase();
     hotel = {
       name: 'hotel',
       images: this.images,
       data: data,
+      author: tempObj.email,
     };
     this.firebase.createHotel(hotel);
     this.SharedFuncService.displayToast(
@@ -42,6 +45,7 @@ export class UploadAppartmentComponent implements OnInit {
       this.router.navigateByUrl('/');
     }, 1500);
   }
+
   switchPhotos() {
     if (this.photoCounter == 0) {
       setTimeout(() => {

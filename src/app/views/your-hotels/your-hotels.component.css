@@ -1,0 +1,20 @@
+.content-container {
+  padding-top: 20px;
+  padding-left: 220px;
+  background-image: url("http://stockbarter.com/public/frontend/images/pattern-icons/2.png");
+  min-height: 1100px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 200px;
+}
+.content {
+  width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  min-height: 800px;
+  border-radius: 2%;
+}

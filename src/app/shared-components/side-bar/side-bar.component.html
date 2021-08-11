@@ -24,6 +24,16 @@
                 <i class="fa fa-file-upload" aria-hidden="true"></i> Upload appartment
             </a>
         </li>
+        <li *ngIf="userType=='hotel'">
+            <a routerLink="/hotels">
+                <i class="fa fa-hotel" aria-hidden="true"></i> Your hotels
+            </a>
+        </li>
+        <li *ngIf="userType=='admin'">
+            <a routerLink="/hotels">
+                <i class="fa fa-hotel" aria-hidden="true"></i> Your hotels
+            </a>
+        </li>
         <li class="header">Information</li>
         <li>
             <a routerLink="/sale">
@@ -74,12 +84,12 @@
             </a>
         </li>
         <li *ngIf="userType=='admin'" (click)="logOut()">
-            <a routerLink="/">
+            <a>
                 <i class="fa fa-sign-out-alt" aria-hidden="true"></i> Log out
             </a>
         </li>
         <li *ngIf="userType=='hotel'" (click)="logOut()">
-            <a routerLink="/">
+            <a>
                 <i class="fa fa-sign-out-alt" aria-hidden="true"></i> Log out
             </a>
         </li>

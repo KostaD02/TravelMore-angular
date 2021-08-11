@@ -1,0 +1,17 @@
+<div class="beforeLoad" *ngIf="loader">
+    <app-loader></app-loader>
+</div>
+<div class="afterLoaded" *ngIf="!loader">
+    <app-side-bar></app-side-bar>
+    <section class="content-container">
+        <div class="content">
+            <div class="hotels">
+                <div class="card-hotel" id="displayHotels">
+                    <div *ngFor="let hotel of myHotels">
+                        <app-my-hotel [inputedHotel]="hotel"></app-my-hotel>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
