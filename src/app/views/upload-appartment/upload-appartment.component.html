@@ -140,13 +140,13 @@
                         <div class="form-group">
                             <label for="textArea">Additional text</label>
                             <textarea class="form-control" ngModel name="hotelAdditionalText" rows="5"
-                                placeholder="Enter text"></textarea>
+                                placeholder="Write summary of hotel"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="button">
                     <button *ngIf="secureUpload" [disabled]="!myForm.valid" (click)="uploadHotel(myForm)" class=" btn btn-primary
-                        col-md-12">Upload appartment</button>
+                        col-md-12">Upload Hotel</button>
                 </div>
             </aside>
         </form>

@@ -25,6 +25,7 @@ import { LoaderComponent } from './shared-components/loader/loader.component';
 import { YourHotelsComponent } from './views/your-hotels/your-hotels.component';
 import { MyHotelComponent } from './views/your-hotels/my-hotel/my-hotel.component';
 import { EditHotelComponent } from './views/your-hotels/my-hotel/edit-hotel/edit-hotel.component';
+import { AddRoomComponent } from './views/your-hotels/my-hotel/add-room/add-room.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { EditHotelComponent } from './views/your-hotels/my-hotel/edit-hotel/edit
     YourHotelsComponent,
     MyHotelComponent,
     EditHotelComponent,
+    AddRoomComponent,
   ],
   imports: [
     BrowserModule,

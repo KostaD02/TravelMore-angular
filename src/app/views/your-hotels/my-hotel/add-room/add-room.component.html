@@ -1,0 +1,174 @@
+<div *ngIf="!loaded">
+    <app-loader></app-loader>
+</div>
+<div *ngIf="loaded">
+    <app-side-bar></app-side-bar>
+    <section class="content-container">
+        <div class="content">
+            <form class="formAppartment" #myForm="ngForm">
+                <aside class="left">
+                    <div class="top mainImage" id="mainPhoto">
+                        <img src="https://cdn.dribbble.com/users/2760451/screenshots/5656895/cloud-upload.gif">
+                    </div>
+                    <div class="middle caruseli">
+                        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" id="innerImages">
+
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="uploadPhoto">
+                        <p>Your first uploaded picture will be main photo of appartment</p>
+                        <p>Also you can upload 5 additional photo of room</p>
+                        <p id="leftNumer">5 Additional photo left to upload</p>
+                        <div class="buton">
+                            <button class="btn btn-primary" (click)="uploadPhoto()">Add pictures</button>
+                        </div>
+                    </div>
+                </aside>
+                <aside class="rigth">
+                    <div class="topForm">
+                        <h2>Upload your appartment</h2>
+                        <div class="form-group">
+                            <div class="mb-3 row Concate">
+                                <label for="staticEmail" class="col-sm-4 col-form-label">Price per day (<strong
+                                        style="color:green">$</strong>)</label>
+                                <div class="col-sm-8">
+                                    <input ngModel type="text" name="price"
+                                        placeholder="How much money will be per day to pay ?" class="form-control"
+                                        required pattern="^[0-9]+[0-10000000000000000000000000000000000000]*$">
+                                </div>
+                            </div>
+                            <div class="mb-3 row Concate">
+                                <label for="staticEmail" class="col-sm-5 col-form-label">Appartment length
+                                    (<strong style="color:#2574a9">m<sup>2</sup>
+                                    </strong>)</label>
+                                <div class="col-sm-7">
+                                    <input ngModel type="text" name="appartmentLength"
+                                        placeholder="Enter your appartment length" class="form-control" required
+                                        pattern="^[0-9]+[0-15]*$">
+                                </div>
+                            </div>
+                            <div class="mb-3 row Concate">
+                                <label for="staticEmail" class="col-sm-5 col-form-label">Rooms in appartment</label>
+                                <div class="col-sm-7">
+                                    <input ngModel type="text" name="rooms"
+                                        placeholder="How many rooms in your appartment ?" class="form-control" required
+                                        pattern="^[0-9]+[0-100]*$">
+                                </div>
+                            </div>
+                            <div class="mb-3 row Concate">
+                                <label for="staticEmail" class="col-sm-5 col-form-label">Appartment floor</label>
+                                <div class="col-sm-7">
+                                    <input ngModel type="text" name="floor"
+                                        placeholder="Enter appartment floor (e.g 3) " class="form-control" required
+                                        pattern="^[0-9]+[0-161]*$">
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row Concate">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Bed room</label>
+                                <div class="col-sm-10">
+                                    <input ngModel type="text" name="bed"
+                                        placeholder="How many bed room in your appartment ?" class="form-control"
+                                        required pattern="^[0-9]+[0-100]*$">
+                                </div>
+                            </div>
+                            <div class="mb-3 row Concate">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Bath room</label>
+                                <div class="col-sm-10">
+                                    <input ngModel type="text" name="bath"
+                                        placeholder="How many bath room in your appartment ?" class="form-control"
+                                        required pattern="^[0-9]+[0-100]*$">
+                                </div>
+                            </div>
+                            <div class="mb-3 row Concate">
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Kitchen</label>
+                                <div class="col-sm-10">
+                                    <input ngModel type="text" name="kitchen"
+                                        placeholder="How many kitchen in your appartment ?" class="form-control"
+                                        required pattern="^[0-9]+[0-100]*$">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkBoxes">
+                        <div class="boxes">
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="cableInternet" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-ethernet"></i>Cable internet</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="wifi" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-wifi"></i>Wifi</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="tv" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-tv"></i>TV</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="miniBar" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-glass-martini-alt"></i>Mini bar</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="balcony" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-bold"></i>Balcony</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="Furniture" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-couch"></i>Furniture</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="telephone" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-phone-alt"></i>Telephone</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="elevator" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-arrow-up"></i>Elevator</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="naturalAir" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-burn"></i>Natural air</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="fireExtinguisher" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-fire-extinguisher"></i>Fire
+                                    extinguisher</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="emergencyExit" ngModel>
+                                <label lass="form-check-label"><i class="fas fa-first-aid"></i>Emergency exit</label>
+                            </div>
+                            <div class="box">
+                                <input class="form-check-input" type="checkbox" name="smartHouse" ngModel>
+                                <label lass="form-check-label"><i class="fab fa-android"></i>Smart house</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="textArea">
+                        <div class="form-group">
+                            <label for="textArea">Additional text</label>
+                            <textarea class="form-control" ngModel name="appartmentAdditionalText" rows="5"
+                                placeholder="Write summary of appartment"></textarea>
+                        </div>
+                    </div>
+                    <div class="uploadButton">
+                        <button *ngIf="secureUpload" [disabled]="!myForm.valid" class="btn btn-success col-md-12"
+                            (click)="uploadAppartment(myForm)">Add
+                            appartment</button>
+                    </div>
+                </aside>
+            </form>
+        </div>
+    </section>
+</div>

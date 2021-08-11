@@ -13,11 +13,13 @@ import { UploadAppartmentComponent } from './views/upload-appartment/upload-appa
 import { SaleComponent } from './views/sale/sale.component';
 import { YourHotelsComponent } from './views/your-hotels/your-hotels.component';
 import { EditHotelComponent } from './views/your-hotels/my-hotel/edit-hotel/edit-hotel.component';
+import { AddRoomComponent } from './views/your-hotels/my-hotel/add-room/add-room.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'apartments/:name', component: ApartmentsComponent },
-  { path: 'apartments-edit/:name', component: EditHotelComponent },
+  { path: 'hotel/:name', component: ApartmentsComponent },
+  { path: 'hotel-add-appartment/:name/:key', component: AddRoomComponent },
+  { path: 'hotel-edit/:name/:key', component: EditHotelComponent },
   { path: 'hotels', component: YourHotelsComponent },
   { path: 'sale', component: SaleComponent },
   { path: 'upload', component: UploadAppartmentComponent },
@@ -33,6 +35,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

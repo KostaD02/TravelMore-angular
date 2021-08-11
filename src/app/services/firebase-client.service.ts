@@ -47,4 +47,16 @@ export class FirebaseClientService {
         return response;
       });
   }
+  editHotels(hotel: any, key: string) {
+    return this.firebaseClient
+      .collection(environment.firebaseCollections.hotels)
+      .doc(key)
+      .update(hotel);
+  }
+  deleteHotel(key: string) {
+    return this.firebaseClient
+      .collection(environment.firebaseCollections.hotels)
+      .doc(key)
+      .delete();
+  }
 }

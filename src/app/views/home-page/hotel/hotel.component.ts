@@ -20,6 +20,5 @@ export class HotelComponent implements OnInit {
     } else {
       this.mainImage = this.myHotelData.images[0];
     }
-    console.log(this.myHotelData);
   }
 }

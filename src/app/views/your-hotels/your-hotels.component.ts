@@ -10,6 +10,7 @@ import { FirebaseClientService } from 'src/app/services/firebase-client.service'
 export class YourHotelsComponent implements OnInit {
   loader: boolean = true;
   allHotels: any = [];
+  @Output() keysArray: any = [];
   @Output() myHotels: any = [];
   currentUser: any = {};
   constructor(
@@ -24,13 +25,15 @@ export class YourHotelsComponent implements OnInit {
     this.firebase.getHotels().subscribe((element) => {
       element.forEach((e: any) => {
         this.allHotels.push(e.payload.doc.data());
+        if (e.payload.doc.data().author == this.currentUser.email) {
+          this.keysArray.push(e.payload.doc.id);
+        }
       });
     });
     setTimeout(() => {
       this.checkMyHotels(this.allHotels);
       this.loader = false;
     }, 1600);
-    console.log(this.myHotels);
   }
   checkMyHotels(array: any) {
     array.forEach((element: any) => {

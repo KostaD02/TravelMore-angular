@@ -10,7 +10,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./edit-hotel.component.css'],
 })
 export class EditHotelComponent implements OnInit {
+  key: string = '';
   tempboolean: boolean = false;
+  tempImageHolder: string = '';
   secureUpload: boolean = true;
   images: any = [];
   photoCounter: number = 0;
@@ -18,7 +20,6 @@ export class EditHotelComponent implements OnInit {
   hotelName: string = '';
   hotelsArray: any = [];
   currentHotel: any = [];
-  sharedFunc: any;
   constructor(
     private SharedFuncService: SharedFuncService,
     private firebase: FirebaseClientService,
@@ -29,6 +30,7 @@ export class EditHotelComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.hotelName = params.name;
+      this.key = params.key;
     });
     this.firebase.getHotels().subscribe((element) => {
       element.forEach((e: any) => {
@@ -58,7 +60,6 @@ export class EditHotelComponent implements OnInit {
       width: 800,
     });
   }
-  Delete(index: any) {}
   AddImage() {
     this.uploadPhoto();
     setTimeout(() => {
@@ -103,7 +104,46 @@ export class EditHotelComponent implements OnInit {
   greaterThan(index: any) {
     return this.photoCounter > index;
   }
-  SwitchImage(index: any) {}
+  SwitchImage(index: any) {
+    this.switchImages();
+    if (index == 0) {
+      const mainImage = document.getElementById('mainImage');
+      mainImage!.style.backgroundImage = `url(${this.tempImageHolder})`;
+      this.tempboolean = false;
+      this.images[index] = this.tempImageHolder;
+    }
+    if (index == 1) {
+      const mainImage = document.getElementById('first');
+      mainImage!.style.backgroundImage = `url(${this.tempImageHolder})`;
+      this.tempboolean = false;
+      this.images[index] = this.tempImageHolder;
+    }
+    if (index == 2) {
+      const mainImage = document.getElementById('second');
+      mainImage!.style.backgroundImage = `url(${this.tempImageHolder})`;
+      this.tempboolean = false;
+      this.images[index] = this.tempImageHolder;
+    }
+    if (index == 3) {
+      const mainImage = document.getElementById('third');
+      mainImage!.style.backgroundImage = `url(${this.tempImageHolder})`;
+      this.tempboolean = false;
+      this.images[index] = this.tempImageHolder;
+    }
+    if (index == 4) {
+      const mainImage = document.getElementById('forth');
+      mainImage!.style.backgroundImage = `url(${this.tempImageHolder})`;
+      this.tempboolean = false;
+      this.images[index] = this.tempImageHolder;
+    }
+    if (index == 5) {
+      const mainImage = document.getElementById('fifth');
+      mainImage!.style.backgroundImage = `url(${this.tempImageHolder})`;
+      this.tempboolean = false;
+      this.images[index] = this.tempImageHolder;
+    }
+    console.log(this.images);
+  }
   displayPhotos() {
     if (this.currentHotel.images.length == 0) {
       const mainImage = document.getElementById('mainImage');
@@ -145,7 +185,7 @@ export class EditHotelComponent implements OnInit {
       }
     });
     if (indexHotel == -1) {
-      this.sharedFunc.displayToast(
+      this.SharedFuncService.displayToast(
         'Sorry unexpected error',
         'info',
         'blue',
@@ -153,7 +193,7 @@ export class EditHotelComponent implements OnInit {
       );
       this.router.navigateByUrl('/help');
       setTimeout(() => {
-        this.sharedFunc.displayToast(
+        this.SharedFuncService.displayToast(
           'Please describe problem exactly what happend',
           'question',
           'grey'
@@ -164,7 +204,32 @@ export class EditHotelComponent implements OnInit {
     }
   }
   editHotel(form: NgForm) {
-    console.log(form.value);
+    this.secureUpload = false;
+    let hotel = {};
+    let data = form.value;
+    let localstorage = localStorage.getItem('UsersArray');
+    let tempObj = JSON.parse(localstorage as any);
+    data['hotelAddress'] = data.hotelAddress.toLowerCase();
+    data['hotelName'] = data.hotelName.toLowerCase();
+    hotel = {
+      name: 'hotel',
+      images: this.images,
+      data: data,
+      author: tempObj.email,
+    };
+    try {
+      this.firebase.editHotels(hotel, this.key);
+      this.SharedFuncService.displayToast(
+        'Your hotel edited successfuly',
+        'success',
+        'green'
+      );
+    } catch (error) {
+      this.router.navigateByUrl('/help');
+    }
+    setTimeout(() => {
+      this.router.navigateByUrl('/');
+    }, 1500);
   }
   async uploadPhoto() {
     if (this.photoCounter == 6) {
@@ -203,6 +268,40 @@ export class EditHotelComponent implements OnInit {
         this.photoCounter++;
         console.log(this.images);
         console.log(this.photoCounter);
+      };
+      uploaded = true;
+      reader.readAsDataURL(file);
+    }
+    if (uploaded) {
+      this.tempboolean = true;
+    }
+  }
+  async switchImages() {
+    let uploaded = false;
+    const { value: file } = await Swal.fire({
+      title: 'Select image',
+      input: 'file',
+      inputAttributes: {
+        accept: 'image/*',
+        'aria-label': 'Upload your profile picture',
+      },
+    });
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        Swal.fire({
+          title: 'Your uploaded hotel picture',
+          imageUrl: e.target.result as any,
+          imageAlt: 'The uploaded picture',
+        });
+        this.tempImageHolder = e.target.result;
+        this.SharedFuncService.displayToast(
+          'Photo switched successfully',
+          'success',
+          'green',
+          2000
+        );
       };
       uploaded = true;
       reader.readAsDataURL(file);

@@ -7,8 +7,8 @@
         <div class="content">
             <div class="hotels">
                 <div class="card-hotel" id="displayHotels">
-                    <div *ngFor="let hotel of myHotels">
-                        <app-my-hotel [inputedHotel]="hotel"></app-my-hotel>
+                    <div *ngFor="let hotel of myHotels;let i=index">
+                        <app-my-hotel [inputedHotel]="hotel" [key]="keysArray[i]"></app-my-hotel>
                     </div>
                 </div>
             </div>

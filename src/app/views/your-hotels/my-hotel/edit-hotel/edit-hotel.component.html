@@ -15,27 +15,22 @@
                         <div class="photos first" id="first" *ngIf="greaterThan('1')">
                             <button class="btn btn-primary" (click)="ShowFullSize('1')">View image</button>
                             <button class="btn btn-warning" (click)="SwitchImage('1')">Switch image</button>
-                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
                         </div>
                         <div class="photos second" id="second" *ngIf="greaterThan('2')">
                             <button class="btn btn-primary" (click)="ShowFullSize('2')">View image</button>
                             <button class="btn btn-warning" (click)="SwitchImage('2')">Switch image</button>
-                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
                         </div>
                         <div class="photos third" id="third" *ngIf="greaterThan('3')">
                             <button class="btn btn-primary" (click)="ShowFullSize('3')">View image</button>
                             <button class="btn btn-warning" (click)="SwitchImage('3')">Switch image</button>
-                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
                         </div>
                         <div class="photos forth" id="forth" *ngIf="greaterThan('4')">
                             <button class="btn btn-primary" (click)="ShowFullSize('4')">View image</button>
                             <button class="btn btn-warning" (click)="SwitchImage('4')">Switch image</button>
-                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
                         </div>
                         <div class="photos fifth" id="fifth" *ngIf="greaterThan('5')">
                             <button class="btn btn-primary" (click)="ShowFullSize('5')">View image</button>
                             <button class="btn btn-warning" (click)="SwitchImage('5')">Switch image</button>
-                            <button class="btn btn-danger" (click)="Delete('1')">Remove iamge</button>
                         </div>
                     </div>
                     <div class="add">
@@ -175,7 +170,7 @@
                         </div>
                     </div>
                     <div class="button">
-                        <button *ngIf="secureUpload" (click)="editHotel(myForm)" class=" btn btn-primary
+                        <button *ngIf="secureUpload" [disabled]="!myForm.valid" (click)="editHotel(myForm)" class=" btn btn-primary
                             col-md-12">Upload appartment</button>
                     </div>
                 </aside>

@@ -37,9 +37,11 @@
         </p>
         <div class="bottom">
             <div class="leftBottom">
-                <button [routerLink]="['/apartments',hotelName]" class="btn btn-primary">Check Hotel</button>
-                <button [routerLink]="['/apartments-edit',hotelName]" class="btn btn-warning">Edit Hotel</button>
-                <button class="btn btn-danger">Delete Hotel</button>
+                <button [routerLink]="['/hotel-add-appartment',hotelName,key]" class="btn btn-success">Add room</button>
+                <button [routerLink]="['/hotel',hotelName]" class="btn btn-primary">Check Hotel</button>
+                <button [routerLink]="['/hotel-edit',hotelName,key]" class="btn btn-warning">Edit
+                    Hotel</button>
+                <button (click)="deleteHotel(key)" class="btn btn-danger">Delete Hotel</button>
             </div>
             <div class="rigthBottom">
                 <p>Phone number: {{myHotelData.data.hotelPhoneNumber}}</p>
