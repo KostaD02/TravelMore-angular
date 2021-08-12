@@ -1,0 +1,51 @@
+<div id="container">
+    <div class="product-details">
+        <h1>#{{index+1}} Appartment </h1>
+        <p class="information" *ngIf="inputedAppartment.data.appartmentAdditionalText!==''">
+            {{inputedAppartment.data.appartmentAdditionalText}}
+        </p>
+        <p class="information" *ngIf="inputedAppartment.data.appartmentAdditionalText==''">
+            Appartment hasn't added any additional text
+        </p>
+        <div class="bottom">
+            <div class="BottomLeft">
+                <p>Price per day (<strong style="color:green">$</strong>) {{inputedAppartment.data.price}}</p>
+                <p>Appartment length (<strong style="color:#2574a9">m<sup>2</sup></strong>)
+                    {{inputedAppartment.data.price}}
+                </p>
+                <p>Rooms in appartment : {{inputedAppartment.data.rooms}}</p>
+                <p>Bedroom in appartment : {{inputedAppartment.data.bed}}</p>
+                <p>Bathroom in appartment : {{inputedAppartment.data.bath}}</p>
+                <p>Kitchen in appartment : {{inputedAppartment.data.kitchen}}</p>
+                <p>Appartment floor : {{inputedAppartment.data.floor}}</p>
+            </div>
+            <div class="BottomRigth">
+                <button [routerLink]="['/hotel',hotelName,appartmentName]" class="btn btn-primary">Check
+                    Appartment</button>
+            </div>
+        </div>
+    </div>
+    <div class=" product-image">
+        <img [src]="mainImage">
+        <div class="info">
+            <h2 class="gogingDown">Facilities:</h2>
+            <ul class="flexAuto">
+                <li *ngIf="inputedAppartment.data.cableInternet"><i class="fas fa-ethernet"></i>Cable internet
+                </li>
+                <li *ngIf="inputedAppartment.data.wifi"><i class="fas fa-wifi"></i>Wifi</li>
+                <li *ngIf="inputedAppartment.data.tv"><i class="fas fa-tv"></i>TV</li>
+                <li *ngIf="inputedAppartment.data.miniBar"><i class="fas fa-glass-martini-alt"></i>Mini bar</li>
+                <li *ngIf="inputedAppartment.data.balcony"><i class="fas fa-bold"></i>Balcony</li>
+                <li *ngIf="inputedAppartment.data.Furniture"><i class="fas fa-couch"></i>Furniture</li>
+                <li *ngIf="inputedAppartment.data.telephone"><i class="fas fa-phone-alt"></i>Telephone</li>
+                <li *ngIf="inputedAppartment.data.elevator"><i class="fas fa-arrow-up"></i>Elevator</li>
+                <li *ngIf="inputedAppartment.data.naturalAir"><i class="fas fa-burn"></i>Natural air</li>
+                <li *ngIf="inputedAppartment.data.fireExtinguisher"><i class="fas fa-fire-extinguisher"></i>Fire
+                    extinguisher</li>
+                <li *ngIf="inputedAppartment.data.emergencyExit"><i class="fas fa-first-aid"></i>Emergency exit
+                </li>
+                <li *ngIf="inputedAppartment.data.smartHouse"><i class="fab fa-android"></i>Smart house</li>
+            </ul>
+        </div>
+    </div>
+</div>

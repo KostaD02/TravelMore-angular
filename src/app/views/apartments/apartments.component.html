@@ -4,7 +4,7 @@
     <section class="content-container">
         <div class="content">
             <div class="top">
-                <div *ngIf="currentHotel.images[0]!==''" class="backgroundWithText">
+                <div *ngIf="greaterThan(currentHotel.images)" class="backgroundWithText">
                     <div class="overlayed" [ngStyle]="{'background-image': 'url(' + currentHotel.images[0] + ')'}">
                         <h2>{{hotelName}}</h2>
                         <div class="color-overlay"></div>
@@ -13,17 +13,91 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="currentHotel.images[0]==''" class="backgroundWithOutText">
-                    <h2>{{hotelName}}</h2>
-                    <img src="https://cdn.iconscout.com/icon/free/png-512/no-image-1771002-1505134.png"
-                        alt="This hotel doesn't have any photo">
+                <div *ngIf="!greaterThan(currentHotel.images)" class="backgroundWithOutText">
+                    <div class="left">
+                        <img src="../../../assets/images/no_image(by_tegi).gif" alt="This hotel doesn't have any photo">
+                    </div>
+                    <div class="rigth">
+                        <h2>{{hotelName}}</h2>
+                        <p>This hotel didn't upload main photo</p>
+                    </div>
                 </div>
             </div>
             <div class="middle">
-                <h2>middle</h2>
+                <div class="photoArea">
+                    <div class="haveSlider" *ngIf="slider">
+                        <div class="carusel">
+                            <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner" id="innerImages">
+
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="withoutSlider" *ngIf="!slider">
+                        <p>This hotel doesn't have any additional photo</p>
+                        <img src="https://cdn.iconscout.com/icon/free/png-512/no-image-1771002-1505134.png"
+                            alt="This hotel doesn't have any photo">
+                    </div>
+                </div>
+                <div class="text-area">
+                    <h2>Information about <strong style="color:#2574a9">{{hotelName}}</strong> hotel</h2>
+                    <div class="inputInformation">
+                        <p><i class="fas fa-map"></i> Hotel location : {{currentHotel.data.hotelLocation}}</p>
+                        <p><i class="fas fa-phone-alt"></i> Hotel phone number : {{currentHotel.data.hotelPhoneNumber}}
+                        </p>
+                        <p><i class="fas fa-envelope"></i> Hotel mail : {{currentHotel.data.hotelAddress}}</p>
+                        <p *ngIf="currentHotel.data.rating!=''"><i class="fas fa-star"></i> Hotel star :
+                            {{currentHotel.data.rating}}</p>
+                        <p *ngIf="currentHotel.data.rating==''"><i class="fas fa-star"></i> Hotel isn't stared yet <i
+                                class="far fa-frown"></i></p>
+                    </div>
+                    <div class="checkBoxes">
+                        <span *ngIf="currentHotel.data.hotelParking"><i class="fas fa-parking"></i>Parking place</span>
+                        <span *ngIf="currentHotel.data.hotelDisabledPeople"><i class="fas fa-wheelchair"></i>Handicap
+                            place
+                        </span>
+                        <span *ngIf="currentHotel.data.hotelCentralHeating"><i
+                                class="fas fa-temperature-high"></i>Central
+                            heating
+                        </span>
+                        <span *ngIf="currentHotel.data.hotelRestaurant"><i class="fas fa-utensils"></i>Restaurant</span>
+                        <span *ngIf="currentHotel.data.hotelPlayGround"><i class="fas fa-child"></i>Playground</span>
+                        <span *ngIf="currentHotel.data.hotelKaraoke"><i class="fa fa-microphone-alt"></i>Karaoke</span>
+                        <span *ngIf="currentHotel.data.hotelClub"><i class="fa fa-glass-martini-alt"></i>Club</span>
+                        <span *ngIf="currentHotel.data.hotelspanft"><i class="fas fa-arrow-up"></i>Elevator</span>
+                        <span *ngIf="currentHotel.data.hotelPubspancPool"><i class="fas fa-swimming-pool"></i>Pubspanc
+                            pool
+                        </span>
+                        <span *ngIf="currentHotel.data.hotelPrivatePool"><i class="fas fa-swimmer"></i>Private
+                            pool</span>
+                        <span *ngIf="currentHotel.data.hotelPetOption"><i class="fas fa-paw"></i>Pet friendly</span>
+                        <span *ngIf="currentHotel.data.hotelConferanceRoom"><i class="fas fa-handshake"></i>Conference
+                            hall
+                        </span>
+                        <span *ngIf="currentHotel.data.hotelGym"><i class="fas fa-dumbbell"></i>Gym</span>
+                        <span *ngIf="currentHotel.data.hotelTransport"><i class="fas fa-bus"></i>Transport</span>
+                    </div>
+                </div>
             </div>
-            <div class="bottom">
-                <h3>bottom</h3>
+            <div class="additionalText" *ngIf="currentHotel.data.hotelAdditionalText!=''">
+                <h5><i class="fas fa-plus"></i> Additional text</h5>
+                <p>{{currentHotel.data.hotelAdditionalText}}</p>
+            </div>
+        </div>
+        <div class="displayCards" *ngIf="check(currentHotel)">
+            <div *ngFor="let appartment of currentHotel.appartments;let i=index">
+                <app-appartment [hotelName]="HotelName" [index]="i" [inputedAppartment]="appartment"></app-appartment>
             </div>
         </div>
     </section>

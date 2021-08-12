@@ -157,3 +157,51 @@ input.ng-dirty.ng-invalid {
 input.ng-dirty.ng-valid {
   box-shadow: green 0px 2px 10px !important;
 }
+textArea::placeholder {
+  color: #2574a9;
+}
+input::placeholder {
+  color: #2574a9;
+}
+.fa-parking {
+  color: blue;
+}
+.fa-wheelchair {
+  color: yellowgreen;
+}
+.fa-temperature-high {
+  color: red;
+}
+.fa-utensils {
+  color: goldenrod;
+}
+.fa-child {
+  color: black;
+}
+.fa-microphone-alt {
+  color: tomato;
+}
+.fa-glass-martini-alt {
+  color: purple;
+}
+.fa-arrow-up {
+  color: green;
+}
+.fa-swimming-pool {
+  color: cyan;
+}
+.fa-swimmer {
+  color: skyblue;
+}
+.fa-paw {
+  color: brown;
+}
+.fa-handshake {
+  color: limegreen;
+}
+.fa-dumbbell {
+  color: grey;
+}
+.fa-bus {
+  color: darkorange;
+}

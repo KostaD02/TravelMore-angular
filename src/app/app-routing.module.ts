@@ -18,6 +18,7 @@ import { AddRoomComponent } from './views/your-hotels/my-hotel/add-room/add-room
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'hotel/:name', component: ApartmentsComponent },
+  { path: 'hotel/:name/:id', component: BookComponent },
   { path: 'hotel-add-appartment/:name/:key', component: AddRoomComponent },
   { path: 'hotel-edit/:name/:key', component: EditHotelComponent },
   { path: 'hotels', component: YourHotelsComponent },
@@ -25,7 +26,6 @@ const routes: Routes = [
   { path: 'upload', component: UploadAppartmentComponent },
   { path: 'authorization', component: AuthorizationComponent },
   { path: 'authorization/register', component: RegisterComponent },
-  { path: 'book/:id', component: BookComponent },
   { path: 'help', component: HelpComponent },
   { path: 'dashboard', component: DashbordComponent },
   { path: 'settings', component: SettingsComponent },

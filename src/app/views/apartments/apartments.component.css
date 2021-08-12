@@ -14,7 +14,6 @@
   width: 600px;
   margin: 20px auto;
   width: 1000px;
-  text-align: center;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -29,10 +28,6 @@
 .middle {
   width: 100%;
   min-height: 300px;
-}
-.bottom {
-  width: 100%;
-  height: 300px;
 }
 .overlayed {
   color: #fff;
@@ -64,4 +59,131 @@
 }
 .button {
   z-index: 1;
+}
+.haveSlider,
+.withoutSlider {
+  width: 288px;
+  height: 313px;
+  margin-top: 20px;
+  text-align: center;
+}
+.left {
+  width: 50%;
+  height: 300px;
+  display: inline-block;
+}
+.rigth {
+  width: 45%;
+  height: 300px;
+  float: right;
+}
+.left img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.rigth h2 {
+  margin-top: 100px;
+  text-align: center;
+}
+.rigth p {
+  text-align: center;
+}
+.withoutSlider img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.withoutSlider p {
+  margin: 0px;
+}
+.text-area {
+  width: 60%;
+  float: right;
+  height: 100%;
+}
+.photoArea {
+  width: 288px;
+  height: 100%;
+  display: inline-block;
+  margin-left: 40px;
+}
+.text-area h2 {
+  margin-top: 10px;
+  text-align: center;
+}
+.fa-map {
+  color: green;
+}
+.fa-envelope {
+  color: magenta;
+}
+.fa-phone-alt {
+  color: #2574a9;
+}
+.fa-star {
+  color: orange;
+}
+.checkBoxes {
+  display: grid;
+  grid-template-columns: repeat(3, 33.3%);
+  grid-row-gap: 5px;
+}
+.additionalText {
+  text-align: center;
+}
+.additionalText h5 {
+  margin-top: 10px;
+}
+.additionalText p {
+  padding-bottom: 10px;
+  margin: 0px;
+}
+span i {
+  padding-right: 5px;
+}
+.fa-parking {
+  color: blue;
+}
+.fa-wheelchair {
+  color: yellowgreen;
+}
+.fa-temperature-high {
+  color: red;
+}
+.fa-utensils {
+  color: goldenrod;
+}
+.fa-child {
+  color: black;
+}
+.fa-microphone-alt {
+  color: tomato;
+}
+.fa-glass-martini-alt {
+  color: purple;
+}
+.fa-arrow-up {
+  color: green;
+}
+.fa-swimming-pool {
+  color: cyan;
+}
+.fa-swimmer {
+  color: skyblue;
+}
+.fa-paw {
+  color: brown;
+}
+.fa-handshake {
+  color: limegreen;
+}
+.fa-dumbbell {
+  color: grey;
+}
+.fa-bus {
+  color: darkorange;
+}
+.displayCards {
+  padding-bottom: 50px;
 }
