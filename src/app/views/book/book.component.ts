@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import * as numberToWords from 'number-to-words';
 import { FirebaseClientService } from 'src/app/services/firebase-client.service';
 import { SharedFuncService } from 'src/app/services/shared-func.service';
-
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -50,8 +50,8 @@ export class BookComponent implements OnInit {
           'appartmentIndex'
         )!.innerHTML = `You are now checking <strong style="color:#2574a9">${
           this.hotelName
-        }</strong> hotels <strong style="color:#2574a9">${Number(
-          index + 1
+        }</strong> hotels <strong style="color:#2574a9">${numberToWords.toOrdinal(
+          Number(index + 1)
         )}</strong> appartment`;
       }, 100);
     }, 1600);
