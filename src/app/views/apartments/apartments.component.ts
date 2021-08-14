@@ -17,9 +17,9 @@ export class ApartmentsComponent implements OnInit {
   slider: boolean = true;
   constructor(
     private route: ActivatedRoute,
-    private firebase: FirebaseClientService,
     private router: Router,
-    private sharedFunc: SharedFuncService
+    private sharedFunc: SharedFuncService,
+    private firebase: FirebaseClientService
   ) {}
   capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);

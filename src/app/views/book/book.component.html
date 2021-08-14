@@ -1,6 +1,9 @@
-<app-side-bar></app-side-bar>
-<section class="content-container">
-    <div class="content">
-        <p>Test book working</p>
-    </div>
-</section>
+<app-loader *ngIf="!loaded"></app-loader>
+<div *ngIf="loaded" class="loaded">
+    <app-side-bar></app-side-bar>
+    <section class="content-container">
+        <div class="content">
+            <h2 id="appartmentIndex"></h2>
+        </div>
+    </section>
+</div>
