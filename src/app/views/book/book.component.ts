@@ -9,10 +9,12 @@ import { SharedFuncService } from 'src/app/services/shared-func.service';
   styleUrls: ['./book.component.css'],
 })
 export class BookComponent implements OnInit {
+  isUserGuest: boolean = true;
   hotelsArray: any = [];
   indexAppartment: string = '';
   currentAppartment: any = [];
   currentHotel: any = [];
+  imagesAppartment: any = [];
   loaded: boolean = false;
   hotelName: string = '';
   constructor(
@@ -31,7 +33,7 @@ export class BookComponent implements OnInit {
       element.forEach((e: any) => {
         this.hotelsArray.push(e.payload.doc.data());
       });
-      this.takeCurrentHotel(this.hotelsArray);
+      this.takeCurrentAppartment(this.hotelsArray);
     });
     setTimeout(() => {
       while (true) {
@@ -44,19 +46,30 @@ export class BookComponent implements OnInit {
       }
       let index = this.indexAppartment.slice(-1);
       this.currentAppartment = this.currentHotel.appartments[index];
-      console.log(this.currentAppartment);
+      this.imagesAppartment = this.currentAppartment.images;
       setTimeout(() => {
-        document.getElementById(
-          'appartmentIndex'
-        )!.innerHTML = `You are now checking <strong style="color:#2574a9">${
+        let h2 = document.getElementById('appartmentIndex');
+        h2!.innerHTML = `You are now checking <strong style="color:#2574a9">${
           this.hotelName
         }</strong> hotels <strong style="color:#2574a9">${numberToWords.toOrdinal(
-          Number(index + 1)
+          Number(index) + 1
         )}</strong> appartment`;
+        h2!.style.textAlign = 'center';
+        h2!.style.marginBottom = '25px';
       }, 100);
+      try {
+        let user = localStorage.getItem('UsersArray') as any;
+        if (
+          JSON.parse(user).type == 'admin' ||
+          JSON.parse(user).type == 'hotel'
+        )
+          this.isUserGuest = false;
+      } catch (error) {
+        this.isUserGuest = true;
+      }
     }, 1600);
   }
-  takeCurrentHotel(array: any) {
+  takeCurrentAppartment(array: any) {
     let indexHotel = -1;
     array.forEach((element: any, index: any) => {
       if (element.data.hotelName == this.hotelName) {
@@ -81,5 +94,9 @@ export class BookComponent implements OnInit {
     } else {
       this.currentHotel = array[indexHotel];
     }
+  }
+  uploadImage(index: any) {
+    if (this.imagesAppartment[index] == undefined) return false;
+    else return true;
   }
 }

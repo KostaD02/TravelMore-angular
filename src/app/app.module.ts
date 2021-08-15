@@ -27,6 +27,8 @@ import { MyHotelComponent } from './views/your-hotels/my-hotel/my-hotel.componen
 import { EditHotelComponent } from './views/your-hotels/my-hotel/edit-hotel/edit-hotel.component';
 import { AddRoomComponent } from './views/your-hotels/my-hotel/add-room/add-room.component';
 import { AppartmentComponent } from './views/apartments/appartment/appartment.component';
+import { ReservationComponent } from './views/reservation/reservation.component';
+import { SearchComponent } from './views/search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +51,8 @@ import { AppartmentComponent } from './views/apartments/appartment/appartment.co
     EditHotelComponent,
     AddRoomComponent,
     AppartmentComponent,
+    ReservationComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

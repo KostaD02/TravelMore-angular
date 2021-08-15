@@ -14,6 +14,7 @@ import { SaleComponent } from './views/sale/sale.component';
 import { YourHotelsComponent } from './views/your-hotels/your-hotels.component';
 import { EditHotelComponent } from './views/your-hotels/my-hotel/edit-hotel/edit-hotel.component';
 import { AddRoomComponent } from './views/your-hotels/my-hotel/add-room/add-room.component';
+import { SearchComponent } from './views/search/search.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'hotel-add-appartment/:name/:key', component: AddRoomComponent },
   { path: 'hotel-edit/:name/:key', component: EditHotelComponent },
   { path: 'hotels', component: YourHotelsComponent },
+  { path: 'search/:result', component: SearchComponent },
   { path: 'sale', component: SaleComponent },
   { path: 'upload', component: UploadAppartmentComponent },
   { path: 'authorization', component: AuthorizationComponent },
@@ -35,7 +37,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

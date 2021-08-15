@@ -4,6 +4,165 @@
     <section class="content-container">
         <div class="content">
             <h2 id="appartmentIndex"></h2>
+            <div class="mainArea">
+                <div class="Carusel" *ngIf="uploadImage(0)">
+                    <section>
+                        <div class="container">
+                            <div class="carousel">
+                                <input type="radio" name="slides" checked="checked" id="slide-1" *ngIf="uploadImage(0)">
+                                <input type="radio" name="slides" id="slide-2" *ngIf="uploadImage(1)">
+                                <input type="radio" name="slides" id="slide-3" *ngIf="uploadImage(2)">
+                                <input type="radio" name="slides" id="slide-4" *ngIf="uploadImage(3)">
+                                <input type="radio" name="slides" id="slide-5" *ngIf="uploadImage(4)">
+                                <input type="radio" name="slides" id="slide-6" *ngIf="uploadImage(5)">
+                                <ul class="carousel__slides">
+                                    <li class="carousel__slide" *ngIf="uploadImage(0)">
+                                        <figure>
+                                            <div>
+                                                <img [src]="imagesAppartment[0]" alt="">
+                                            </div>
+                                        </figure>
+                                    </li>
+                                    <li class="carousel__slide" *ngIf="uploadImage(1)">
+                                        <figure>
+                                            <div>
+                                                <img [src]="imagesAppartment[1]" alt="">
+                                            </div>
+                                        </figure>
+                                    </li>
+                                    <li class="carousel__slide" *ngIf="uploadImage(2)">
+                                        <figure>
+                                            <div>
+                                                <img [src]="imagesAppartment[2]" alt="">
+                                            </div>
+                                        </figure>
+                                    </li>
+                                    <li class="carousel__slide" *ngIf="uploadImage(3)">
+                                        <figure>
+                                            <div>
+                                                <img [src]="imagesAppartment[3]" alt="">
+                                            </div>
+                                        </figure>
+                                    </li>
+                                    <li class="carousel__slide" *ngIf="uploadImage(4)">
+                                        <figure>
+                                            <div>
+                                                <img [src]="imagesAppartment[4]" alt="">
+                                            </div>
+                                        </figure>
+                                    </li>
+                                    <li class="carousel__slide" *ngIf="uploadImage(5)">
+                                        <figure>
+                                            <div>
+                                                <img [src]="imagesAppartment[5]" alt="">
+                                            </div>
+                                        </figure>
+                                    </li>
+                                </ul>
+                                <ul class="carousel__thumbnails">
+                                    <li *ngIf="uploadImage(0)">
+                                        <label for="slide-1"><img [src]="imagesAppartment[0]" alt=""></label>
+                                    </li>
+                                    <li *ngIf="uploadImage(1)">
+                                        <label for="slide-2"><img [src]="imagesAppartment[1]" alt=""></label>
+                                    </li>
+                                    <li *ngIf="uploadImage(2)">
+                                        <label for="slide-3"><img [src]="imagesAppartment[2]" alt=""></label>
+                                    </li>
+                                    <li *ngIf="uploadImage(3)">
+                                        <label for="slide-4"><img [src]="imagesAppartment[3]" alt=""></label>
+                                    </li>
+                                    <li *ngIf="uploadImage(4)">
+                                        <label for="slide-5"><img [src]="imagesAppartment[4]" alt=""></label>
+                                    </li>
+                                    <li *ngIf="uploadImage(5)">
+                                        <label for="slide-6"><img [src]="imagesAppartment[5]" alt=""></label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="Carusell" *ngIf="!uploadImage(0)">
+                    <img src="../../../assets/images/no_image(by_tegi).gif" alt="No image">
+                    <p>This appartment didn't uploaded any photo</p>
+                </div>
+                <div class="bottom">
+                    <div class="left">
+                        <div class="information">
+                            <div *ngIf="currentAppartment.data.appartmentAdditionalText!==''">
+                                <h5><i class="fas fa-plus"></i> Additional text <br></h5>
+                                <p style="text-align: center;">{{currentAppartment.data.appartmentAdditionalText}}</p>
+                            </div>
+                            <p *ngIf="currentAppartment.data.appartmentAdditionalText==''">
+                                Appartment hasn't added any additional text
+                            </p>
+                        </div>
+                    </div>
+                    <div class="rigth">
+                        <div class="top">
+                            <div class="gridDisplay">
+                                <p>Price per day (<strong style="color:green">$</strong>)
+                                    {{currentAppartment.data.price}}
+                                </p>
+                                <p>Appartment length (<strong style="color:#2574a9">m<sup>2</sup></strong>)
+                                    {{currentAppartment.data.price}}
+                                </p>
+                                <p>Rooms in appartment : {{currentAppartment.data.rooms}}</p>
+                                <p>Bedroom in appartment : {{currentAppartment.data.bed}}</p>
+                                <p>Bathroom in appartment : {{currentAppartment.data.bath}}</p>
+                                <p>Kitchen in appartment : {{currentAppartment.data.kitchen}}</p>
+                            </div>
+                            <p class="lastOne">Appartment floor : {{currentAppartment.data.floor}}</p>
+                        </div>
+                        <div class="middle">
+                            <div class="checkBoxes">
+                                <span *ngIf="currentAppartment.data.cableInternet">
+                                    <i class="fas fa-ethernet"></i>Cable internet
+                                </span>
+                                <span *ngIf="currentAppartment.data.wifi">
+                                    <i class="fas fa-wifi"></i>Wifi
+                                </span>
+                                <span *ngIf="currentAppartment.data.tv">
+                                    <i class="fas fa-tv"></i>TV
+                                </span>
+                                <span *ngIf="currentAppartment.data.miniBar">
+                                    <i class="fas fa-glass-martini-alt"></i>Mini bar
+                                </span>
+                                <span *ngIf="currentAppartment.data.balcony">
+                                    <i class="fas fa-bold"></i>Balcony
+                                </span>
+                                <span *ngIf="currentAppartment.data.Furniture">
+                                    <i class="fas fa-couch"></i>Furniture
+                                </span>
+                                <span *ngIf="currentAppartment.data.telephone">
+                                    <i class="fas fa-phone-alt"></i>Telephone
+                                </span>
+                                <span *ngIf="currentAppartment.data.elevator">
+                                    <i class="fas fa-arrow-up"></i>Elevator
+                                </span>
+                                <span *ngIf="currentAppartment.data.naturalAir">
+                                    <i class="fas fa-burn"></i>Natural air
+                                </span>
+                                <span *ngIf="currentAppartment.data.fireExtinguisher">
+                                    <i class="fas fa-fire-extinguisher"></i>Fire extinguisher</span>
+                                <span *ngIf="currentAppartment.data.emergencyExit">
+                                    <i class="fas fa-first-aid"></i>Emergency exit
+                                </span>
+                                <span *ngIf="currentAppartment.data.smartHouse">
+                                    <i class="fab fa-android"></i>Smart house
+                                </span>
+                            </div>
+                        </div>
+                        <div class="bottomBottom">
+                            <div class="button" *ngIf="!isUserGuest">
+                                <button class="btn btn-success" [routerLink]="['/hotel',hotelName]">Book
+                                    appartment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </div>

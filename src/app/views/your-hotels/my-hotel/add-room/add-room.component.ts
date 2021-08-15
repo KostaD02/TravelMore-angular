@@ -228,10 +228,8 @@ export class AddRoomComponent implements OnInit {
     if (this.currentHotel['appartments'] == undefined) {
       this.currentHotel['appartments'] = [];
       this.currentHotel.appartments.push({ data, images });
-      console.log(this.currentHotel);
     } else {
       this.currentHotel.appartments.push({ data, images });
-      console.log(this.currentHotel);
     }
   }
 }

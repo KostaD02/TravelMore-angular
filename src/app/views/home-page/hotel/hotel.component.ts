@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./hotel.component.css'],
 })
 export class HotelComponent implements OnInit {
-  @Input() inputedHotel = {};
+  @Input() inputedHotel: any;
   myHotelData!: any;
   mainImage: string = '';
   hotelName: string = '';
