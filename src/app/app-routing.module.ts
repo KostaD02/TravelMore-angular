@@ -15,7 +15,7 @@ import { YourHotelsComponent } from './views/your-hotels/your-hotels.component';
 import { EditHotelComponent } from './views/your-hotels/my-hotel/edit-hotel/edit-hotel.component';
 import { AddRoomComponent } from './views/your-hotels/my-hotel/add-room/add-room.component';
 import { SearchComponent } from './views/search/search.component';
-
+import { ReservationComponent } from './views/reservation/reservation.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'hotel/:name', component: ApartmentsComponent },
@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'hotels', component: YourHotelsComponent },
   { path: 'search/:result', component: SearchComponent },
   { path: 'sale', component: SaleComponent },
+  { path: 'reservation/:name/:key', component: ReservationComponent },
   { path: 'upload', component: UploadAppartmentComponent },
   { path: 'authorization', component: AuthorizationComponent },
   { path: 'authorization/register', component: RegisterComponent },

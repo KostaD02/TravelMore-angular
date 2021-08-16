@@ -10,6 +10,7 @@ import { SharedFuncService } from 'src/app/services/shared-func.service';
 })
 export class BookComponent implements OnInit {
   isUserGuest: boolean = true;
+  isBooked: boolean = false;
   hotelsArray: any = [];
   indexAppartment: string = '';
   currentAppartment: any = [];
@@ -93,6 +94,9 @@ export class BookComponent implements OnInit {
       }, 2500);
     } else {
       this.currentHotel = array[indexHotel];
+      setTimeout(() => {
+        this.isBooked = this.currentAppartment.booked;
+      }, 1500);
     }
   }
   uploadImage(index: any) {

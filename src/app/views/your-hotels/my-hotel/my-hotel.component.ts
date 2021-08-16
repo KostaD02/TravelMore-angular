@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-hotel.component.css'],
 })
 export class MyHotelComponent implements OnInit {
-  @Input() inputedHotel = {};
+  @Input() inputedHotel: any;
   @Input() key: string = '';
   myHotelData!: any;
   mainImage: string = '';
@@ -21,7 +21,6 @@ export class MyHotelComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    let i = 0;
     this.myHotelData = this.inputedHotel;
     this.hotelName = this.myHotelData.data.hotelName;
     if (this.myHotelData.images.length == 0) {
@@ -30,6 +29,12 @@ export class MyHotelComponent implements OnInit {
     } else {
       this.mainImage = this.myHotelData.images[0];
     }
+    if (this.inputedHotel['key'] == undefined) {
+      this.inputedHotel['key'] = this.key;
+    } else {
+      this.inputedHotel['key'] = this.key;
+    }
+    this.firebase.editHotels(this.inputedHotel, this.key);
   }
   deleteHotel(key: string) {
     Swal.fire({

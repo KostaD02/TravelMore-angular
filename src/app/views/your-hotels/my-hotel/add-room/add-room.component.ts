@@ -74,30 +74,19 @@ export class AddRoomComponent implements OnInit {
     }
   }
   uploadAppartment(form: NgForm) {
-    try {
-      this.addAppartmentToHotel(form.value, this.images);
-      this.secureUpload = false;
-      setTimeout(() => {
-        this.firebase.editHotels(this.currentHotel, this.key);
-        this.SharedFuncService.displayToast(
-          'Your appartment successfully added to hotel',
-          'success',
-          'green'
-        );
-      }, 500);
-      setTimeout(() => {
-        this.router.navigateByUrl('/');
-      }, 3000);
-    } catch (error) {
+    this.addAppartmentToHotel(form.value, this.images);
+    this.secureUpload = false;
+    setTimeout(() => {
+      this.firebase.editHotels(this.currentHotel, this.key);
       this.SharedFuncService.displayToast(
-        'Unexpected error , please describe what happend',
-        'danger',
-        'red'
+        'Your appartment successfully added to hotel',
+        'success',
+        'green'
       );
-      setTimeout(() => {
-        this.router.navigateByUrl('/help');
-      }, 1500);
-    }
+    }, 500);
+    setTimeout(() => {
+      this.router.navigateByUrl('/');
+    }, 3000);
   }
   async uploadPhoto() {
     if (this.photoCounter == 6) {
@@ -225,11 +214,12 @@ export class AddRoomComponent implements OnInit {
     }
   }
   addAppartmentToHotel(data: any, images: any) {
+    let booked = false;
     if (this.currentHotel['appartments'] == undefined) {
       this.currentHotel['appartments'] = [];
-      this.currentHotel.appartments.push({ data, images });
+      this.currentHotel.appartments.push({ data, images, booked });
     } else {
-      this.currentHotel.appartments.push({ data, images });
+      this.currentHotel.appartments.push({ data, images, booked });
     }
   }
 }

@@ -1,1 +1,173 @@
-<p>reservation works!</p>
+<app-loader *ngIf="!loaded"></app-loader>
+<div *ngIf="loaded" class="loaded">
+    <app-side-bar></app-side-bar>
+    <section class="content-container">
+        <div class="Price" *ngIf="!formAccept">
+            <div class="content">
+                <form #myForm="ngForm" (ngSubmit)="submit()">
+                    <div class="left">
+                        <div class="inputDay">
+                            <div class="leftLabel">
+                                <label class="form-label controleWidth">Price for per day {{price}} * {{day}} =
+                                    {{calculatePrice}} <strong style="color:green">$</strong></label>
+                            </div>
+                            <div class="rigthLabel" *ngIf="load">
+                                <span style="text-decoration: line-through;color:red">{{calculatePrice}}</span>
+                                <span> -> </span>
+                                <span style="color:green"> {{newPrice}} </span>
+                            </div>
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text">How many day will you stay ? </span>
+                                <input type="number" class="form-control" (ngModelChange)="change($event)"
+                                    [(ngModel)]="date" name="date" min="1" max="366" required>
+                            </div>
+                        </div>
+                        <div class="children">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text">How many child do you have ? </span>
+                                <input type="number" class="form-control" (ngModelChange)="changeChildren($event)"
+                                    [(ngModel)]="child" name="date" min="0" max="100">
+                            </div>
+                        </div>
+                        <div class="newBorn">
+                            <input type="checkbox" class="form-check-input" (ngModelChange)="changeNewBorn($event)"
+                                [(ngModel)]="newBorn" name="newBorn">
+                            <label class="form-check-label">Do you have new born child ?</label>
+                        </div>
+                        <div class="down">
+                            <button [disabled]="!myForm.valid" class="btn btn-success">Book appartment</button>
+                        </div>
+                    </div>
+
+                    <div class="rigth">
+                        <div class="top">
+                            <h4>25% Discount</h4>
+                            <p>TravelMore Company Offers You 25% Discount On Every Hotel If You Have More Than 4 Kids
+                            </p>
+                        </div>
+                        <div class="bottom">
+                            <h4>15% Discount</h4>
+                            <p>TravelMore Company Offers You 15% Discount on Every Hotel If You have Newbord Child</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="payment" *ngIf="formAccept">
+            <div class="content" *ngIf="payment">
+                <h4 class="goingCenter">You have to pay {{lastPrice}}<strong style="color:green">$</strong> for
+                    {{date}} day(s)</h4>
+                <div class="card">
+                    <div class="left">
+                        <img (click)="pay('bog')"
+                            src="https://images-ext-2.discordapp.net/external/hFL1VhZfiWS5W-tmVgaaTpv1VBvchXuHU3Bc0I9vttE/https/bm.ge/uploads/news/5fe20bdd1ce81.png"
+                            alt="">
+                    </div>
+                    <div class="rigth">
+                        <img (click)="pay('tbc')"
+                            src="https://lh3.googleusercontent.com/proxy/eLdDpmf2ZBNTFm2DsuA1LJ1g-YEJRIMONNdyLRxIm-ZuwIzo9PLUaqEUlKG0MyZNoE2lu-mlylCa2nY8SUY9pBZ1"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="pay" *ngIf="!payment">
+                <div class="bank" *ngIf="option=='bog'">
+                    <h3>Payment will be proccessed by bank of georgia</h3>
+                    <div class="gridView">
+                        <div class="leftBank photo1">
+                            <h4>Plan</h4>
+                            <p>Staying {{date}} day</p>
+                            <p>
+                                Price : <strong style="color:green">$</strong>{{lastPrice}}
+                            </p>
+                        </div>
+                        <div class="rigthBank">
+                            <h4>Pay with card</h4>
+                            <form #myPay="ngForm" (ngSubmit)="submitPayment(myPay)">
+                                <div class="grouped">
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" id="basic-addon1">Phone number</label>
+                                        <input type="tel" class="form-control" ngModel name="phoneNumber" required
+                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789">
+                                    </div>
+                                </div>
+                                <div class="grouped">
+                                    <p class="little">Card information</p>
+                                    <input type="text" class="form-control"
+                                        pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" ngModel name="cardNumber" required
+                                        placeholder="1234-1234-1234-1234">
+                                    <div class="input-group mb-3">
+                                        <input type="text" ngModel required name="cardDate" class="form-control"
+                                            placeholder="MM/YY" pattern="[0-9]{2}/[0-9]{2}">
+                                        <input type="text" ngModel required name="cardCVC" class="form-control"
+                                            placeholder="CVC" pattern="[0-9]{3}">
+                                    </div>
+                                </div>
+                                <div class="grouped">
+                                    <div class="mb-3">
+                                        <label class="form-label">Name on card</label>
+                                        <input type="text" ngModel required class="form-control" name="cardName"
+                                            placeholder="Enter name on card "
+                                            pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$">
+                                    </div>
+                                </div>
+                                <div class="buttonGroup">
+                                    <button [disabled]="!myPay.valid"
+                                        class="btn btn-warning col-md-12 colorize">Pay</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="bank" *ngIf="option=='tbc'">
+                    <h3>Payment will be proccessed by tbc bank</h3>
+                    <div class="gridView">
+                        <div class="leftBank photo2">
+                            <h4>Plan</h4>
+                            <p>Staying {{date}} day</p>
+                            <p>
+                                Price : <strong style="color:green">$</strong>{{lastPrice}}
+                            </p>
+                        </div>
+                        <div class="rigthBank">
+                            <h4>Pay with card</h4>
+                            <form #myPay="ngForm" (ngSubmit)="submitPayment(myPay)">
+                                <div class="grouped">
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" id="basic-addon1">Phone number</label>
+                                        <input type="tel" class="form-control" ngModel name="phoneNumber" required
+                                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" placeholder="123-456-789">
+                                    </div>
+                                </div>
+                                <div class="grouped">
+                                    <p class="little">Card information</p>
+                                    <input type="text" class="form-control"
+                                        pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" ngModel name="cardNumber" required
+                                        placeholder="1234-1234-1234-1234">
+                                    <div class="input-group mb-3">
+                                        <input type="text" ngModel required name="cardDate" class="form-control"
+                                            placeholder="MM/YY" pattern="[0-9]{2}/[0-9]{2}">
+                                        <input type="text" ngModel required name="cardCVC" class="form-control"
+                                            placeholder="CVC" pattern="[0-9]{3}">
+                                    </div>
+                                </div>
+                                <div class="grouped">
+                                    <div class="mb-3">
+                                        <label class="form-label">Name on card</label>
+                                        <input type="text" ngModel required class="form-control" name="cardName"
+                                            placeholder="Enter name on card "
+                                            pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$">
+                                    </div>
+                                </div>
+                                <div class="buttonGroup">
+                                    <button *ngIf="!safeUpload" [disabled]="!myPay.valid"
+                                        class="btn btn-warning col-md-12 colorize2">Pay</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

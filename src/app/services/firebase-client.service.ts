@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { User } from '../models/user-model';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 @Injectable({
@@ -58,5 +57,10 @@ export class FirebaseClientService {
       .collection(environment.firebaseCollections.hotels)
       .doc(key)
       .delete();
+  }
+  getDocument(collectionName: string, key: string) {
+    return this.firebaseClient
+      .doc(`${collectionName}/${key}`)
+      .snapshotChanges();
   }
 }
