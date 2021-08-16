@@ -139,9 +139,13 @@ hr.line {
 }
 .sidebar-container::-webkit-scrollbar-track {
   background-color: transparent;
+  width: 12px;
 }
 .sidebar-container::-webkit-scrollbar-button {
   height: 20px;
+}
+.sidebar-container::-webkit-scrollbar {
+  width: 12px;
 }
 .line {
   margin-left: 10px;

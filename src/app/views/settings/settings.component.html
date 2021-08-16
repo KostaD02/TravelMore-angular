@@ -1,6 +1,60 @@
 <app-side-bar></app-side-bar>
 <section class="content-container">
     <div class="content">
-        <p>Test settings working</p>
+        <h3>User settings</h3>
+        <div class="left">
+            <div class="photo">
+                <img [src]="image" alt="">
+            </div>
+            <div class="tips">
+                <p>You can change your : (name,lastname,email,password,image)</p>
+                <p>You can't change your : (age,gender,account type)</p>
+                <p>If you want change your password fill old password and new password</p>
+                <p>If you don't want change your password fill old password for secure update</p>
+            </div>
+            <div class="buton">
+                <button (click)="updatePicture()" class="btn btn-success col-md-12">Update image</button>
+            </div>
+        </div>
+        <div class="rigth">
+            <form #myForm="ngForm">
+                <div class="input-group flex-nowrap big">
+                    <span class="input-group-text">Name</span>
+                    <input type="text" class="form-control" [(ngModel)]="name" name="name" required>
+                </div>
+                <div class="input-group flex-nowrap big">
+                    <span class="input-group-text">Last name</span>
+                    <input type="text" class="form-control" [(ngModel)]="lastname" name="lastname" required>
+                </div>
+                <div class="input-group flex-nowrap big">
+                    <span class="input-group-text">@</span>
+                    <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+                </div>
+                <div class="input-group flex-nowrap big">
+                    <span class="input-group-text">Old password</span>
+                    <input type="text" class="form-control" ngModel name="oldPassword" required>
+                </div>
+                <div class="input-group flex-nowrap big">
+                    <span class="input-group-text">New Password</span>
+                    <input type="text" class="form-control" ngModel name="newPassword">
+                </div>
+                <div class="input-group flex-nowrap small">
+                    <span class="input-group-text">Age</span>
+                    <input type="text" class="form-control" [(ngModel)]="age" name="age" readonly>
+                </div>
+                <div class="input-group flex-nowrap small">
+                    <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+                    <input type="text" class="form-control" [(ngModel)]="gender" name="gender" readonly>
+                </div>
+                <div class="input-group flex-nowrap small">
+                    <span class="input-group-text"><i class="fas fa-hotel"></i></span>
+                    <input type="text" class="form-control" [(ngModel)]="type" name="type" readonly>
+                </div>
+                <div class="button">
+                    <button *ngIf="secureUpdate" [disabled]="!myForm.valid" (click)="updateUser(myForm)"
+                        class="btn btn-info col-md-12">Save</button>
+                </div>
+            </form>
+        </div>
     </div>
 </section>

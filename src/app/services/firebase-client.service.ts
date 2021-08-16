@@ -52,6 +52,12 @@ export class FirebaseClientService {
       .doc(key)
       .update(hotel);
   }
+  editUsers(user: any, key: string) {
+    return this.firebaseClient
+      .collection(environment.firebaseCollections.users)
+      .doc(key)
+      .update(user);
+  }
   deleteHotel(key: string) {
     return this.firebaseClient
       .collection(environment.firebaseCollections.hotels)

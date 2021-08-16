@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class SharedFuncService {
-  constructor() {}
+  constructor(private route: Router) {}
   displayToast(text: string, Icon: string, color: string, time: number = 1500) {
     const Toast = Swal.mixin({
       toast: true,
@@ -137,5 +138,13 @@ export class SharedFuncService {
       }
     }
     return words.reverse().join(' ');
+  }
+  redirectUnauth() {
+    if (localStorage.length == 0) {
+      this.route.navigateByUrl('/');
+      return false;
+    } else {
+      return true;
+    }
   }
 }
