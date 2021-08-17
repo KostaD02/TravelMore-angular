@@ -32,8 +32,8 @@ export class DashbordComponent implements OnInit {
       this.getEverything();
       setTimeout(() => {
         this.loaded = true;
-        console.log('users', this.usersArray);
-        console.log('hotels', this.hotelsArray);
+        // console.log('users', this.usersArray);
+        // console.log('hotels', this.hotelsArray);
         console.log('messages', this.messagesArray);
       }, 1500);
     }
@@ -105,6 +105,62 @@ export class DashbordComponent implements OnInit {
       if (result.isConfirmed) {
         this.loaded = false;
         this.firebase.deleteUser(key);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
+    });
+  }
+  async reply(array: any) {
+    let obj = {
+      name: '',
+      email: '',
+      message: '',
+      question: '',
+    };
+    let params = {
+      to_name: '',
+      to_email: '',
+      message: '',
+      question: '',
+    };
+    obj.name = array.name;
+    obj.email = array.email;
+    obj.question = array.message;
+    const { value: message } = await Swal.fire({
+      title: `Question by : ${array.name} `,
+      input: 'text',
+      text: `Message : ${array.message}`,
+      inputLabel: 'Enter answer',
+      inputPlaceholder: 'Enter message to send',
+    });
+
+    if (message) {
+      Swal.fire(`Entered answer " ${message} " was sent`);
+      obj.message = message;
+      this.sharedFunc.sendEmail(obj, params);
+    }
+  }
+  checkMessage(data: any) {
+    Swal.fire({
+      icon: 'question',
+      title: 'Message',
+      text: `${data}`,
+    });
+  }
+  deleteMessage(key: string, name: string) {
+    Swal.fire({
+      title: `Are you sure to delete user : ${name} message?`,
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.loaded = false;
+        this.firebase.deleteMessage(key);
         setTimeout(() => {
           window.location.reload();
         }, 1000);

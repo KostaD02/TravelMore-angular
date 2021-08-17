@@ -75,4 +75,10 @@ export class FirebaseClientService {
       .doc(`${collectionName}/${key}`)
       .snapshotChanges();
   }
+  deleteMessage(key: string) {
+    return this.firebaseClient
+      .collection(environment.firebaseCollections.helpMessages)
+      .doc(key)
+      .delete();
+  }
 }

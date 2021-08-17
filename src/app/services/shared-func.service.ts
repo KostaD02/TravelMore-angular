@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import { NgForm } from '@angular/forms';
 @Injectable({
   providedIn: 'root',
 })
@@ -159,5 +161,17 @@ export class SharedFuncService {
         return true;
       }
     }
+  }
+  sendEmail(data: any, params: any) {
+    params.to_name = data.name;
+    params.to_email = data.email;
+    params.message = data.message;
+    params.question = data.question;
+    emailjs.send(
+      'service_kitwqnk',
+      'template_39w76pr',
+      params,
+      'user_GzK09mGXoDYAgls2nw3pb'
+    );
   }
 }

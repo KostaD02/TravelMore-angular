@@ -85,9 +85,9 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Message</th>
-                                    <th class="center">Reply</th>
-                                    <th class="center">Delete</th>
+                                    <th class="center">See Message</th>
+                                    <th class="center">Reply Message</th>
+                                    <th class="center">Delete Message</th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let message of messagesArray;let i=index">
@@ -95,13 +95,15 @@
                                     <td>{{i+1}}</td>
                                     <td>{{message.name}}</td>
                                     <td>{{message.email}}</td>
-                                    <td>{{message.message}}</td>
+                                    <td class="center"><button class="btn btn-primary"
+                                            (click)="checkMessage(message.message)">Message</button></td>
                                     <td class="center">
-                                        <button class="btn btn-success">Reply
+                                        <button class="btn btn-success" (click)="reply(message)">Reply
                                         </button>
                                     </td>
                                     <td class="center">
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger"
+                                            (click)="deleteMessage(message.keys,message.name)">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
