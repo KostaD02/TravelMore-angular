@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  address: string = '';
   passwordVisible: boolean = false;
   user: User = new User('', '', 0, '', '', '', '', '');
   usersArray: any[] = [];
@@ -25,6 +26,9 @@ export class RegisterComponent implements OnInit {
         this.usersArray.push(e.payload.doc.data());
       });
     });
+    this.sharedFunc.getIp().subscribe((result: any) => {
+      this.address = result.ip;
+    });
   }
   createUser() {
     if (this.checkUserValid()) {
@@ -37,6 +41,7 @@ export class RegisterComponent implements OnInit {
         password: this.user.password,
         image: this.user.img,
         type: this.user.type,
+        address: this.address,
       });
     }
     this.user = new User('', '', 0, '', '', '', '', '');
