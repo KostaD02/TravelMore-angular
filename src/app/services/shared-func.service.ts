@@ -142,7 +142,7 @@ export class SharedFuncService {
     return words.reverse().join(' ');
   }
   redirectUnauth() {
-    if (localStorage.length == 0) {
+    if (localStorage['UsersArray'].length == 0) {
       this.route.navigateByUrl('/');
       return false;
     } else {

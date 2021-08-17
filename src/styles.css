@@ -21,3 +21,9 @@ body {
 *::-webkit-scrollbar {
   width: 12px;
 }
+.nigth {
+  background-image: url("http://stockbarter.com/public/frontend/images/pattern-icons/5.png") !important;
+}
+.day {
+  background-image: url("http://stockbarter.com/public/frontend/images/pattern-icons/2.png") !important;
+}

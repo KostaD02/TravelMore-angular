@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseClientService } from 'src/app/services/firebase-client.service';
+import { SharedFuncService } from 'src/app/services/shared-func.service';
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +13,8 @@ export class HomePageComponent implements OnInit {
   @Output() hotelsArray: any = [];
   constructor(
     private firebase: FirebaseClientService,
-    private router: Router
+    private router: Router,
+    private sharedFunc: SharedFuncService
   ) {}
   ngOnInit(): void {
     this.firebase.getHotels().subscribe((element) => {

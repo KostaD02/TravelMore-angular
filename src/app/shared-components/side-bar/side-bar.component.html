@@ -1,5 +1,5 @@
 <section class="sidebar-container">
-    <div class="sidebar-logo" routerLink="/">
+    <div class="sidebar-logo">
         TravelMore
     </div>
     <ul class="sidebar-navigation">
@@ -61,6 +61,11 @@
                 </div>
                 <div *ngIf="myUser.type=='hotel'">
                     <p class="typeGuest">{{myUser.type}}</p>
+                </div>
+                <div class="makeCenter">
+                    <a>
+                        <input (click)="changeMode()" type="checkbox" id="changeMode" class="toggle">
+                    </a>
                 </div>
             </div>
         </li>

@@ -7,12 +7,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./side-bar.component.css'],
 })
 export class SideBarComponent implements OnInit {
+  counter: number = 0;
   myUser: User = new User('Guest', '', 0, '', '', '', '', '');
   userType!: string;
   userFromData: any;
   constructor() {}
 
   ngOnInit(): void {
+    this.changeModes();
     if (localStorage.length > 0) {
       let getUser = JSON.parse(localStorage.getItem('UsersArray') as any);
       if (getUser.type == 'admin') {
@@ -58,8 +60,37 @@ export class SideBarComponent implements OnInit {
   }
   logOut() {
     while (localStorage.length != 0) {
-      localStorage.clear();
+      localStorage.removeItem('UsersArray');
       window.location.reload();
+    }
+  }
+  changeMode() {
+    this.counter++;
+    if (this.counter == 1) {
+      if (localStorage['mode'] != 'false') {
+        const bg = document.querySelector('.content-container');
+        bg!.classList.add('day');
+        bg!.classList.remove('nigth');
+      }
+    }
+    if (this.counter % 2 == 0) {
+      localStorage['mode'] = 'false';
+    } else {
+      localStorage['mode'] = 'true';
+    }
+    this.changeModes();
+  }
+  changeModes() {
+    const bg = document.querySelector('.content-container');
+    const input = document.getElementById('changeMode');
+    if (localStorage['mode'] == 'true') {
+      bg!.classList.remove('day');
+      bg!.classList.add('nigth');
+      input?.setAttribute('checked', '');
+    } else {
+      bg!.classList.add('day');
+      bg!.classList.remove('nigth');
+      input?.removeAttribute('checked');
     }
   }
 }
