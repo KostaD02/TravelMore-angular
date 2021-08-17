@@ -7,12 +7,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./side-bar.component.css'],
 })
 export class SideBarComponent implements OnInit {
-  counter: number = 0;
   myUser: User = new User('Guest', '', 0, '', '', '', '', '');
   userType!: string;
   userFromData: any;
   constructor() {}
-
   ngOnInit(): void {
     this.changeModes();
     if (localStorage.length > 0) {
@@ -65,15 +63,9 @@ export class SideBarComponent implements OnInit {
     }
   }
   changeMode() {
-    this.counter++;
-    if (this.counter == 1) {
-      if (localStorage['mode'] != 'false') {
-        const bg = document.querySelector('.content-container');
-        bg!.classList.add('day');
-        bg!.classList.remove('nigth');
-      }
-    }
-    if (this.counter % 2 == 0) {
+    const input = document.getElementById('changeMode');
+    input?.classList.toggle('noclass');
+    if (input?.classList.contains('noclass')) {
       localStorage['mode'] = 'false';
     } else {
       localStorage['mode'] = 'true';
