@@ -147,4 +147,17 @@ export class SharedFuncService {
       return true;
     }
   }
+  redirectAdmin() {
+    if (localStorage.length == 0) {
+      this.route.navigateByUrl('/');
+      return false;
+    } else {
+      let parse = JSON.parse(localStorage['UsersArray']);
+      if (parse.type != 'admin') {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
 }

@@ -1,6 +1,114 @@
-<app-side-bar></app-side-bar>
-<section class="content-container">
-    <div class="content">
-        <p>Test dashboard working</p>
-    </div>
-</section>
+<app-loader *ngIf="!loaded"></app-loader>
+<div *ngIf="loaded">
+    <app-side-bar></app-side-bar>
+    <section class="content-container">
+        <div class="content">
+            <header>
+                <aside class="left">
+                    <div class="text active" id="left" (click)="chooseOption('users')">
+                        <i class="fas fa-users "></i> <span>Users</span>
+                    </div>
+                </aside>
+                <aside class="middle">
+                    <div class="text " id="middle" (click)="chooseOption('hotels')">
+                        <i class="fas fa-hotel"></i> <span>Hotels</span>
+                    </div>
+                </aside>
+                <aside class="rigth">
+                    <div class="text " id="rigth" (click)="chooseOption('messages')">
+                        <i class="fas fa-envelope"></i> <span>Messages</span>
+                    </div>
+                </aside>
+            </header>
+            <section>
+                <div class="users" *ngIf="users">
+                    <h4 class="displayCounter">
+                        Current users amounth : {{usersArray.length}}
+                        <i class="fas fa-user"></i>
+                    </h4>
+                    <div class="table">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Last Name</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>Check image</th>
+                                    <th class="center">Edit</th>
+                                    <th class="center">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let user of usersArray;let i=index">
+                                <tr>
+                                    <td>{{i+1}}</td>
+                                    <td>{{user.name}}</td>
+                                    <td>{{user.lastname}}</td>
+                                    <td>{{user.age}}</td>
+                                    <td>{{user.gender}}</td>
+                                    <td>{{user.email}}</td>
+                                    <td>{{user.password}}</td>
+                                    <td class="center">
+                                        <button class="btn btn-primary" (click)="viewImage(user.image,user.name)">Check
+                                        </button>
+                                    </td>
+                                    <td class="center">
+                                        <button class="btn btn-warning" (click)="editUser(user.keys)">Edit</button>
+                                    </td>
+                                    <td class="center">
+                                        <button class="btn btn-danger"
+                                            (click)="deleteUser(user.keys,user.name,user.image)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="hotels" *ngIf="hotels">
+                    <h4 class="displayCounter">
+                        Current hotels amounth : {{hotelsArray.length}}
+                        <i class="fas fa-door-open"></i>
+                    </h4>
+                </div>
+                <div class="messages" *ngIf="mesasges">
+                    <h4 class="displayCounter">
+                        Current messages amounth : {{messagesArray.length}}
+                        <i class="fas fa-envelope-open-text"></i>
+                    </h4>
+                    <div class="table">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Message</th>
+                                    <th class="center">Reply</th>
+                                    <th class="center">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let message of messagesArray;let i=index">
+                                <tr>
+                                    <td>{{i+1}}</td>
+                                    <td>{{message.name}}</td>
+                                    <td>{{message.email}}</td>
+                                    <td>{{message.message}}</td>
+                                    <td class="center">
+                                        <button class="btn btn-success">Reply
+                                        </button>
+                                    </td>
+                                    <td class="center">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>

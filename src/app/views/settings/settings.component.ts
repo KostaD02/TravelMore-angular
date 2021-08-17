@@ -115,7 +115,6 @@ export class SettingsComponent implements OnInit {
         'aria-label': 'Upload your profile picture',
       },
     });
-
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {

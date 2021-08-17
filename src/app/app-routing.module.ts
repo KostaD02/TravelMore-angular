@@ -16,6 +16,7 @@ import { EditHotelComponent } from './views/your-hotels/my-hotel/edit-hotel/edit
 import { AddRoomComponent } from './views/your-hotels/my-hotel/add-room/add-room.component';
 import { SearchComponent } from './views/search/search.component';
 import { ReservationComponent } from './views/reservation/reservation.component';
+import { UserEditsComponent } from './views/dashbord/user-edits/user-edits.component';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'hotel/:name', component: ApartmentsComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'authorization/register', component: RegisterComponent },
   { path: 'help', component: HelpComponent },
   { path: 'dashboard', component: DashbordComponent },
+  { path: 'dashboard/:key', component: UserEditsComponent },
   { path: 'settings', component: SettingsComponent },
   { path: '404', component: NotFoundComponent },
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
@@ -38,6 +40,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

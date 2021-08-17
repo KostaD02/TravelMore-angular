@@ -64,6 +64,12 @@ export class FirebaseClientService {
       .doc(key)
       .delete();
   }
+  deleteUser(key: string) {
+    return this.firebaseClient
+      .collection(environment.firebaseCollections.users)
+      .doc(key)
+      .delete();
+  }
   getDocument(collectionName: string, key: string) {
     return this.firebaseClient
       .doc(`${collectionName}/${key}`)
