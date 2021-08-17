@@ -14,13 +14,18 @@ export class UploadAppartmentComponent implements OnInit {
   secureUpload: boolean = true;
   images: any = [];
   photoCounter: number = 0;
+  address: string = '';
   constructor(
     private SharedFuncService: SharedFuncService,
     private firebase: FirebaseClientService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.SharedFuncService.getIp().subscribe((result: any) => {
+      this.address = result.ip;
+    });
+  }
   uploadHotel(form: NgForm) {
     this.secureUpload = false;
     let hotel = {};
@@ -34,6 +39,7 @@ export class UploadAppartmentComponent implements OnInit {
       images: this.images,
       data: data,
       author: tempObj.email,
+      ipAddress: this.address,
     };
     this.firebase.createHotel(hotel);
     this.SharedFuncService.displayToast(

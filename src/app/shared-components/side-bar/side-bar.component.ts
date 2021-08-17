@@ -13,7 +13,7 @@ export class SideBarComponent implements OnInit {
   constructor() {}
   ngOnInit(): void {
     this.changeModes();
-    if (localStorage.length > 0) {
+    if (localStorage.length > 1) {
       let getUser = JSON.parse(localStorage.getItem('UsersArray') as any);
       if (getUser.type == 'admin') {
         this.userType = 'admin';
@@ -60,6 +60,7 @@ export class SideBarComponent implements OnInit {
     while (localStorage.length != 0) {
       localStorage.removeItem('UsersArray');
       window.location.reload();
+      if (localStorage['UsersArray'] == undefined) break;
     }
   }
   changeMode() {

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
-import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class SharedFuncService {
-  constructor(private route: Router) {}
+  constructor(private route: Router, private http: HttpClient) {}
   displayToast(text: string, Icon: string, color: string, time: number = 1500) {
     const Toast = Swal.mixin({
       toast: true,
@@ -173,5 +173,8 @@ export class SharedFuncService {
       params,
       'user_GzK09mGXoDYAgls2nw3pb'
     );
+  }
+  getIp() {
+    return this.http.get('http://api.ipify.org/?format=json');
   }
 }

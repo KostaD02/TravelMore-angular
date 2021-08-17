@@ -7,7 +7,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { SideBarComponent } from './shared-components/side-bar/side-bar.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { HelpComponent } from './views/help/help.component';
@@ -62,6 +62,7 @@ import { UserEditsComponent } from './views/dashbord/user-edits/user-edits.compo
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
