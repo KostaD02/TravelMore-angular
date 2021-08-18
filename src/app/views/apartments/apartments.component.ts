@@ -55,24 +55,7 @@ export class ApartmentsComponent implements OnInit {
         indexHotel = index;
       }
     });
-    if (indexHotel == -1) {
-      this.sharedFunc.displayToast(
-        'Sorry unexpected error',
-        'info',
-        'blue',
-        2500
-      );
-      this.router.navigateByUrl('/help');
-      setTimeout(() => {
-        this.sharedFunc.displayToast(
-          'Please describe problem exactly what happend',
-          'question',
-          'grey'
-        );
-      }, 2500);
-    } else {
-      this.currentHotel = array[indexHotel];
-    }
+    this.currentHotel = array[indexHotel];
   }
   greaterThan(data: any) {
     return data.length > 0;
