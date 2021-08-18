@@ -154,7 +154,7 @@ export class SharedFuncService {
     }
   }
   redirectAdmin() {
-    if (localStorage.length <= 2) {
+    if (localStorage.length < 2) {
       this.route.navigateByUrl('/');
       return false;
     } else {

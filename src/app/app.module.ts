@@ -30,6 +30,7 @@ import { AppartmentComponent } from './views/apartments/appartment/appartment.co
 import { ReservationComponent } from './views/reservation/reservation.component';
 import { SearchComponent } from './views/search/search.component';
 import { UserEditsComponent } from './views/dashbord/user-edits/user-edits.component';
+import { HotelEditsComponent } from './views/dashbord/hotel-edits/hotel-edits.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { UserEditsComponent } from './views/dashbord/user-edits/user-edits.compo
     ReservationComponent,
     SearchComponent,
     UserEditsComponent,
+    HotelEditsComponent,
   ],
   imports: [
     BrowserModule,

@@ -165,4 +165,67 @@ export class DashbordComponent implements OnInit {
       }
     });
   }
+  checkImageAppartment(name: string, data: string, index: number) {
+    Swal.fire({
+      title: `Hotel <strong style="color:#2574a9">${name}</strong> #${
+        index + 1
+      } appartment main image `,
+      html: `<img  width="600" height="400" src="${data}" alt="Image wasn't uploaded" style="object-fit: contain">`,
+      width: 800,
+    });
+  }
+  removeBook(key: string, index: number) {
+    let data: any;
+    this.firebase.getDocument('hotel-collection', key).subscribe((element) => {
+      data = element.payload.data();
+    });
+    setTimeout(() => {
+      data.appartments[index].booked = false;
+      setTimeout(() => {
+        this.firebase.editHotels(data, key);
+        this.loaded = false;
+        this.firebase.deleteUser(key);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }, 500);
+    }, 1000);
+  }
+  deleteAppartment(key: string, index: number) {
+    let data: any;
+    this.firebase.getDocument('hotel-collection', key).subscribe((element) => {
+      data = element.payload.data();
+    });
+    setTimeout(() => {
+      data.appartments.splice(index, 1);
+      setTimeout(() => {
+        this.firebase.editHotels(data, key);
+        this.loaded = false;
+        this.firebase.deleteUser(key);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }, 500);
+    }, 1000);
+  }
+  checkHotelImage(name: string, data: string) {
+    Swal.fire({
+      title: `Hotel <strong style="color:#2574a9">${name}</strong> main image `,
+      html: `<img  width="600" height="400" src="${data}" alt="Image wasn't uploaded" style="object-fit: contain">`,
+      width: 800,
+    });
+  }
+  gotoHotel(name: string) {
+    this.router.navigateByUrl(`/hotel/${name}`);
+  }
+  deleteHotel(key: string) {
+    this.loaded = false;
+    this.firebase.deleteHotel(key);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  }
+  gotoEditHotel(name: string, key: string) {
+    this.router.navigateByUrl(`/dashboard/hotel-edit/${name}/${key}`);
+  }
 }

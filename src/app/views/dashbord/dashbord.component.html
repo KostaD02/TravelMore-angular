@@ -93,19 +93,21 @@
                                     <td>{{hotel.author}}</td>
                                     <td>{{hotel.data.hotelLocation}}</td>
                                     <td class="center">
-                                        <button class="btn btn-primary">Image</button>
+                                        <button class="btn btn-primary"
+                                            (click)="checkHotelImage(hotel.data.hotelName,hotel.images[0])">Image</button>
                                     </td>
                                     <td class="center">
-                                        <button class="btn btn-success">Hotel
+                                        <button class="btn btn-success" (click)="gotoHotel(hotel.data.hotelName)">Hotel
                                         </button>
                                     </td>
                                     <td class="center">
-                                        <button class="btn btn-warning">
+                                        <button class="btn btn-warning"
+                                            (click)="gotoEditHotel(hotel.data.hotelName,hotel.keys)">
                                             Edit
                                         </button>
                                     </td>
                                     <td class="center">
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger" (click)="deleteHotel(hotel.keys)">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -143,15 +145,18 @@
                                                 <td class="center">{{appartment.data.kitchen}}</td>
                                                 <td class="center">{{appartment.data.floor}}</td>
                                                 <td class="center">
-                                                    <button class="btn btn-primary">Image</button>
+                                                    <button class="btn btn-primary"
+                                                        (click)="checkImageAppartment(hotel.data.hotelName,appartment.images[0],j)">Image</button>
                                                 </td>
                                                 <td class="center">
-                                                    <button *ngIf='appartment.booked' class="btn btn-info">Remove
+                                                    <button *ngIf='appartment.booked' (click)="removeBook(hotel.keys,j)"
+                                                        class="btn btn-info">Remove
                                                         Book</button>
                                                     <span *ngIf='!appartment.booked'>Appartment isn't booked</span>
                                                 </td>
                                                 <td class="center">
-                                                    <button class="btn btn-danger">Delete</button>
+                                                    <button class="btn btn-danger"
+                                                        (click)="deleteAppartment(hotel.keys,j)">Delete</button>
                                                 </td>
                                             </tr>
                                         </tbody>
