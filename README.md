@@ -1,5 +1,8 @@
 # TravelMore
 
+This project was build by Konstantine Datunishvili and Tegi Miqautadze <br>
+Check site : https://travelmore-a0675.firebaseapp.com/ <br>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.3.
 
 ## Development server
