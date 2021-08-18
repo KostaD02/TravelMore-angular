@@ -28,12 +28,11 @@ export class DashbordComponent implements OnInit {
       localStorage.removeItem('needReload');
       window.location.reload();
     }
-    if (this.sharedFunc.redirectAdmin()) {
-      this.getEverything();
-      setTimeout(() => {
-        this.loaded = true;
-      }, 1500);
-    }
+    this.sharedFunc.redirectAdmin();
+    this.getEverything();
+    setTimeout(() => {
+      this.loaded = true;
+    }, 1500);
   }
   chooseOption(option: string) {
     if (option == 'users') {

@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
   opacity: 0.7;
-  background-image: url("http://stockbarter.com/public/frontend/images/pattern-icons/2.png");
+  background-image: url(../../../assets/images/bgDay.png);
 }
 .loading {
   width: 100%;

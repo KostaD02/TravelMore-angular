@@ -2,7 +2,7 @@
 .content-container {
   padding-top: 20px;
   padding-left: 220px;
-  background-image: url("http://stockbarter.com/public/frontend/images/pattern-icons/2.png");
+  background-image: url(../../../../../assets/images/bgDay.png);
   min-height: 1100px;
   background-attachment: fixed;
   background-position: center;
