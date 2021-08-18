@@ -14,7 +14,6 @@ export class AppartmentComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.inputedAppartment.data);
     if (this.inputedAppartment.images.length == 0) {
       this.mainImage =
         'https://cdn.iconscout.com/icon/free/png-512/no-image-1771002-1505134.png';

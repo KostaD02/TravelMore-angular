@@ -151,7 +151,6 @@ export class ReservationComponent implements OnInit {
       this.payment = false;
       this.option = 'bog';
     } else {
-      console.log('tbc');
       this.payment = false;
       this.option = 'tbc';
     }

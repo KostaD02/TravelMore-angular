@@ -29,12 +29,11 @@ export class SearchComponent implements OnInit {
         this.hotelsArray.push(e.payload.doc.data());
       });
     });
-    console.log(this.hotelsArray);
+
     setTimeout(() => {
       this.loader = false;
       setTimeout(() => {
         this.compareResult(this.hotelsArray);
-        console.log(this.resultArray);
       }, 100);
     }, 1500);
   }

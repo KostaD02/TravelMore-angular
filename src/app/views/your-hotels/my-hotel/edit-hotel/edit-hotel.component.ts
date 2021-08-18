@@ -142,7 +142,6 @@ export class EditHotelComponent implements OnInit {
       this.tempboolean = false;
       this.images[index] = this.tempImageHolder;
     }
-    console.log(this.images);
   }
   displayPhotos() {
     if (this.currentHotel.images.length == 0) {
@@ -266,8 +265,6 @@ export class EditHotelComponent implements OnInit {
           2000
         );
         this.photoCounter++;
-        console.log(this.images);
-        console.log(this.photoCounter);
       };
       uploaded = true;
       reader.readAsDataURL(file);
