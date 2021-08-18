@@ -192,21 +192,39 @@ export class DashbordComponent implements OnInit {
     }, 1000);
   }
   deleteAppartment(key: string, index: number) {
-    let data: any;
-    this.firebase.getDocument('hotel-collection', key).subscribe((element) => {
-      data = element.payload.data();
-    });
-    setTimeout(() => {
-      data.appartments.splice(index, 1);
-      setTimeout(() => {
-        this.firebase.editHotels(data, key);
+    Swal.fire({
+      title: `Are you use to delete appartment ? `,
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.loaded = false;
-        this.firebase.deleteUser(key);
+        let data: any;
+        this.firebase
+          .getDocument('hotel-collection', key)
+          .subscribe((element) => {
+            data = element.payload.data();
+          });
+        setTimeout(() => {
+          data.appartments.splice(index, 1);
+          setTimeout(() => {
+            this.firebase.editHotels(data, key);
+            this.loaded = false;
+            this.firebase.deleteUser(key);
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+          }, 500);
+        }, 1000);
         setTimeout(() => {
           window.location.reload();
         }, 1000);
-      }, 500);
-    }, 1000);
+      }
+    });
   }
   checkHotelImage(name: string, data: string) {
     Swal.fire({
@@ -219,11 +237,23 @@ export class DashbordComponent implements OnInit {
     this.router.navigateByUrl(`/hotel/${name}`);
   }
   deleteHotel(key: string) {
-    this.loaded = false;
-    this.firebase.deleteHotel(key);
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    Swal.fire({
+      title: `Are you use to delete appartment ? `,
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.loaded = false;
+        this.firebase.deleteHotel(key);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
+    });
   }
   gotoEditHotel(name: string, key: string) {
     this.router.navigateByUrl(`/dashboard/hotel-edit/${name}/${key}`);
