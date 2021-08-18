@@ -81,7 +81,13 @@
   margin-top: 30px;
   margin-left: 20px;
   margin-right: 20px;
-  min-height: 150px;
+  max-height: 120px;
+  min-height: 120px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 390px;
+  min-width: 390px;
+  text-align: unset;
 }
 .bottom {
   width: 100%;
