@@ -25,6 +25,10 @@ export class SharedFuncService {
       title: text,
     });
   }
+  getIp() {
+    return this.http.get('http://api.ipify.org/?format=json');
+    //Vinc ucenzuro tipis masalas atvirtavs shors ver wava :))
+  }
   numberToEnglish(n: any, custom_join_character: any) {
     let string = n.toString(),
       units,
@@ -150,7 +154,7 @@ export class SharedFuncService {
     }
   }
   redirectAdmin() {
-    if (localStorage.length == 0) {
+    if (localStorage.length <= 2) {
       this.route.navigateByUrl('/');
       return false;
     } else {
@@ -173,8 +177,5 @@ export class SharedFuncService {
       params,
       'user_GzK09mGXoDYAgls2nw3pb'
     );
-  }
-  getIp() {
-    return this.http.get('http://api.ipify.org/?format=json');
   }
 }

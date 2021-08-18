@@ -67,9 +67,9 @@ export class SideBarComponent implements OnInit {
     const input = document.getElementById('changeMode');
     input?.classList.toggle('noclass');
     if (input?.classList.contains('noclass')) {
-      localStorage['mode'] = 'false';
-    } else {
       localStorage['mode'] = 'true';
+    } else {
+      localStorage['mode'] = 'false';
     }
     this.changeModes();
   }
@@ -77,6 +77,7 @@ export class SideBarComponent implements OnInit {
     const bg = document.querySelector('.content-container');
     const input = document.getElementById('changeMode');
     if (localStorage['mode'] == 'true') {
+      input!.classList.add('noclass');
       bg!.classList.remove('day');
       bg!.classList.add('nigth');
       input?.setAttribute('checked', '');

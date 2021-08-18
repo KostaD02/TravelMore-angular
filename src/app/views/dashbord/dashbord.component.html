@@ -72,6 +72,94 @@
                         Current hotels amounth : {{hotelsArray.length}}
                         <i class="fas fa-door-open"></i>
                     </h4>
+                    <div class="table">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Hotel name</th>
+                                    <th>Uploader</th>
+                                    <th>Location</th>
+                                    <th class="center">Check Image</th>
+                                    <th class="center">Check Hotel</th>
+                                    <th class="center">Edit Hotel</th>
+                                    <th class="center">Delete Hotel</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let hotel of hotelsArray;let i=index">
+                                <tr>
+                                    <td>{{i+1}}</td>
+                                    <td>{{hotel.data.hotelName}}</td>
+                                    <td>{{hotel.author}}</td>
+                                    <td>{{hotel.data.hotelLocation}}</td>
+                                    <td class="center">
+                                        <button class="btn btn-primary">Image</button>
+                                    </td>
+                                    <td class="center">
+                                        <button class="btn btn-success">Hotel
+                                        </button>
+                                    </td>
+                                    <td class="center">
+                                        <button class="btn btn-warning">
+                                            Edit
+                                        </button>
+                                    </td>
+                                    <td class="center">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="appartments" *ngFor="let hotel of hotelsArray;let i=index">
+                        <div *ngIf="hotel.hasOwnProperty('appartments')">
+                            <h5 style="text-transform: capitalize"><span
+                                    style="color:#2574a9">{{hotel.data.hotelName}}</span> contain
+                                {{hotel.appartments.length}} appartment <i class="far fa-building"></i></h5>
+                            <div>
+                                <div class="table">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Price</th>
+                                                <th>Length m<sup>2</sup></th>
+                                                <th>Bed</th>
+                                                <th>Room</th>
+                                                <th>Kitchen</th>
+                                                <th>Floor</th>
+                                                <th class="center">Check Image</th>
+                                                <th class="center">Book</th>
+                                                <th class="center">Delete Appartment</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngFor="let appartment of hotel.appartments;let j=index">
+                                            <tr>
+                                                <td class="center">{{j+1}}</td>
+                                                <td class="center">{{appartment.data.price}}</td>
+                                                <td class="center">{{appartment.data.appartmentLength}}</td>
+                                                <td class="center">{{appartment.data.bed}}</td>
+                                                <td class="center">{{appartment.data.rooms}}</td>
+                                                <td class="center">{{appartment.data.kitchen}}</td>
+                                                <td class="center">{{appartment.data.floor}}</td>
+                                                <td class="center">
+                                                    <button class="btn btn-primary">Image</button>
+                                                </td>
+                                                <td class="center">
+                                                    <button *ngIf='appartment.booked' class="btn btn-info">Remove
+                                                        Book</button>
+                                                    <span *ngIf='!appartment.booked'>Appartment isn't booked</span>
+                                                </td>
+                                                <td class="center">
+                                                    <button class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="messages" *ngIf="mesasges">
                     <h4 class="displayCounter">

@@ -19,7 +19,12 @@ export class YourHotelsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let localstorage = localStorage.getItem('UsersArray');
+    let localstorage;
+    if (localStorage['UsersArray'] != undefined) {
+      localstorage = localStorage.getItem('UsersArray');
+    } else {
+      this.router.navigateByUrl('/');
+    }
     let tempObj = JSON.parse(localstorage as any);
     this.currentUser = tempObj;
     this.firebase.getHotels().subscribe((element) => {

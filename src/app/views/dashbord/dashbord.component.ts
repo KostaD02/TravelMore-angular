@@ -32,9 +32,7 @@ export class DashbordComponent implements OnInit {
       this.getEverything();
       setTimeout(() => {
         this.loaded = true;
-        // console.log('users', this.usersArray);
-        // console.log('hotels', this.hotelsArray);
-        console.log('messages', this.messagesArray);
+        console.log('hotels', this.hotelsArray);
       }, 1500);
     }
   }
