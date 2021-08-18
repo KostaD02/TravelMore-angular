@@ -31,20 +31,19 @@ export class UserEditsComponent implements OnInit {
   newPassword: string = '';
   oldPassword: string = '';
   ngOnInit(): void {
-    if (this.sharedFunc.redirectUnauth()) {
-      this.route.params.subscribe((params: Params) => {
-        this.key = params.key;
+    this.sharedFunc.redirectUnauth();
+    this.route.params.subscribe((params: Params) => {
+      this.key = params.key;
+    });
+    this.firebase
+      .getDocument('user-collection', this.key)
+      .subscribe((element) => {
+        this.currentUser = element.payload.data();
       });
-      this.firebase
-        .getDocument('user-collection', this.key)
-        .subscribe((element) => {
-          this.currentUser = element.payload.data();
-        });
-      setTimeout(() => {
-        this.loader = true;
-        this.updateStaticData();
-      }, 1000);
-    }
+    setTimeout(() => {
+      this.loader = true;
+      this.updateStaticData();
+    }, 1000);
   }
   updateStaticData() {
     this.age = this.currentUser.age;

@@ -28,24 +28,23 @@ export class HotelEditsComponent implements OnInit {
   photoCounter: number = 0;
   hotelName: string = '';
   ngOnInit(): void {
-    if (this.SharedFuncService.redirectUnauth()) {
-      this.route.params.subscribe((params: Params) => {
-        this.key = params.key;
+    this.SharedFuncService.redirectUnauth();
+    this.route.params.subscribe((params: Params) => {
+      this.key = params.key;
+    });
+    this.firebase
+      .getDocument('hotel-collection', this.key)
+      .subscribe((element) => {
+        this.currentHotel = element.payload.data();
       });
-      this.firebase
-        .getDocument('hotel-collection', this.key)
-        .subscribe((element) => {
-          this.currentHotel = element.payload.data();
-        });
+    setTimeout(() => {
+      this.loader = true;
+      this.photoCounter = this.currentHotel.images.length;
+      this.images = this.currentHotel.images;
       setTimeout(() => {
-        this.loader = true;
-        this.photoCounter = this.currentHotel.images.length;
-        this.images = this.currentHotel.images;
-        setTimeout(() => {
-          this.displayPhotos();
-        }, 1000);
+        this.displayPhotos();
       }, 1000);
-    }
+    }, 1000);
   }
   ShowFullSize(index: any) {
     Swal.fire({

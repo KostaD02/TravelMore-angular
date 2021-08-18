@@ -42,15 +42,15 @@
                     </div>
                     <div class="input-group flex-nowrap small">
                         <span class="input-group-text">Age</span>
-                        <input type="text" class="form-control" [(ngModel)]="age" name="age" readonly>
+                        <input type="text" class="form-control" [(ngModel)]="age" name="age" required>
                     </div>
                     <div class="input-group flex-nowrap small">
                         <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
-                        <input type="text" class="form-control" [(ngModel)]="gender" name="gender" readonly>
+                        <input type="text" class="form-control" [(ngModel)]="gender" name="gender" required>
                     </div>
                     <div class="input-group flex-nowrap small">
                         <span class="input-group-text"><i class="fas fa-hotel"></i></span>
-                        <input type="text" class="form-control" [(ngModel)]="type" name="type" readonly>
+                        <input type="text" class="form-control" [(ngModel)]="type" name="type" required>
                     </div>
                     <div class="button">
                         <button *ngIf="secureUpdate" [disabled]="!myForm.valid" (click)="updateUser(myForm)"

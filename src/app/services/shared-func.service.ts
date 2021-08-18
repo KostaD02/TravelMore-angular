@@ -143,7 +143,10 @@ export class SharedFuncService {
     return words.reverse().join(' ');
   }
   redirectUnauth() {
-    if (localStorage['UsersArray'].length == 0) {
+    if (
+      localStorage['UsersArray'] == undefined ||
+      localStorage['UsersArray'].length == 0
+    ) {
       this.route.navigateByUrl('/');
       return false;
     } else {
