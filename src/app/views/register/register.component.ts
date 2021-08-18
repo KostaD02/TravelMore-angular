@@ -24,14 +24,16 @@ export class RegisterComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.firebase.getUser().subscribe((element) => {
-      element.forEach((e: any) => {
-        this.usersArray.push(e.payload.doc.data());
+    if (this.sharedFunc.redirectAuth()) {
+      this.firebase.getUser().subscribe((element) => {
+        element.forEach((e: any) => {
+          this.usersArray.push(e.payload.doc.data());
+        });
       });
-    });
-    this.sharedFunc.getIp().subscribe((result: any) => {
-      this.address = result.ip;
-    });
+      this.sharedFunc.getIp().subscribe((result: any) => {
+        this.address = result.ip;
+      });
+    }
   }
   createUser(form: NgForm) {
     let data = form.value;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FirebaseClientService } from './../../services/firebase-client.service';
+import { SharedFuncService } from 'src/app/services/shared-func.service';
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -14,15 +15,18 @@ export class AuthorizationComponent implements OnInit {
   usersArray: any[] = [];
   constructor(
     private firebase: FirebaseClientService,
-    private router: Router
+    private router: Router,
+    private sharedFunc: SharedFuncService
   ) {}
 
   ngOnInit(): void {
-    this.firebase.getUser().subscribe((element) => {
-      element.forEach((e: any) => {
-        this.usersArray.push(e.payload.doc.data());
+    if (this.sharedFunc.redirectAuth()) {
+      this.firebase.getUser().subscribe((element) => {
+        element.forEach((e: any) => {
+          this.usersArray.push(e.payload.doc.data());
+        });
       });
-    });
+    }
   }
   logIn() {
     for (let i = 0; i < this.usersArray.length; i++) {

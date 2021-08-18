@@ -178,4 +178,15 @@ export class SharedFuncService {
       'user_GzK09mGXoDYAgls2nw3pb'
     );
   }
+  redirectAuth() {
+    if (
+      localStorage['UsersArray'] == '' ||
+      localStorage['UsersArray'] == undefined
+    ) {
+      return true;
+    } else {
+      this.route.navigateByUrl('/');
+      return false;
+    }
+  }
 }
