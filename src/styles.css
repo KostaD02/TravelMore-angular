@@ -22,8 +22,8 @@ body {
   width: 12px;
 }
 .nigth {
-  background-image: url("http://stockbarter.com/public/frontend/images/pattern-icons/5.png") !important;
+  background-image: url(./assets//images/bgNigth.png) !important;
 }
 .day {
-  background-image: url("http://stockbarter.com/public/frontend/images/pattern-icons/2.png") !important;
+  background-image: url(./assets//images/bgDay.png) !important;
 }
