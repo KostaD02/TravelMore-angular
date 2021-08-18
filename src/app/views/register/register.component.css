@@ -91,3 +91,10 @@ button {
   margin-top: 10px !important;
   min-height: 38px;
 }
+input[type="file"]::-webkit-file-upload-button {
+  border: none !important;
+  background-color: transparent !important;
+}
+#hide {
+  display: none;
+}

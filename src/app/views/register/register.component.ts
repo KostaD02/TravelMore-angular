@@ -4,12 +4,15 @@ import { User } from 'src/app/models/user-model';
 import { FirebaseClientService } from './../../services/firebase-client.service';
 import { SharedFuncService } from 'src/app/services/shared-func.service';
 import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  acceptable: boolean = true;
+  userImage: string = '';
   address: string = '';
   passwordVisible: boolean = false;
   user: User = new User('', '', 0, '', '', '', '', '');
@@ -30,43 +33,30 @@ export class RegisterComponent implements OnInit {
       this.address = result.ip;
     });
   }
-  createUser() {
+  createUser(form: NgForm) {
+    let data = form.value;
+    this.user = new User(
+      data.name,
+      data.lastname,
+      data.age,
+      data.email,
+      data.gender,
+      data.password,
+      this.userImage,
+      data.type
+    );
     if (this.checkUserValid()) {
       this.firebase.createUser({
-        name: this.user.name.toLowerCase(),
-        lastname: this.user.lastname.toLowerCase(),
-        age: this.user.age,
-        gender: this.user.gender,
-        email: this.user.email.toLowerCase(),
-        password: this.user.password,
-        image: this.user.img,
-        type: this.user.type,
+        name: data.name,
+        lastname: data.lastname,
+        age: data.age,
+        email: data.email,
+        gender: data.gender,
+        password: data.password,
+        image: this.userImage,
+        type: data.type,
         address: this.address,
       });
-    }
-    this.user = new User('', '', 0, '', '', '', '', '');
-  }
-  async uploadPicture() {
-    const { value: file } = await Swal.fire({
-      title: 'Select image',
-      input: 'file',
-      inputAttributes: {
-        accept: 'image/*',
-        'aria-label': 'Upload your profile picture',
-      },
-    });
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        Swal.fire({
-          title: 'Your uploaded picture',
-          imageUrl: e.target.result as any,
-          imageAlt: 'The uploaded picture',
-        });
-        this.user.img = e.target.result;
-      };
-      reader.readAsDataURL(file);
     }
   }
   checkUserValid() {
@@ -95,38 +85,38 @@ export class RegisterComponent implements OnInit {
             'success',
             'green'
           );
-        }, 1500);
+        }, 150);
         setTimeout(() => {
           this.sharedFunc.displayToast('Age is acceptable', 'success', 'green');
-        }, 3000);
+        }, 300);
         setTimeout(() => {
           this.sharedFunc.displayToast(
             'Gender is acceptable',
             'success',
             'green'
           );
-        }, 4500);
+        }, 450);
         setTimeout(() => {
           this.sharedFunc.displayToast(
             'Account type is acceptable',
             'success',
             'green'
           );
-        }, 6000);
+        }, 600);
         setTimeout(() => {
           this.sharedFunc.displayToast(
             'Email is acceptable',
             'success',
             'green'
           );
-        }, 7500);
+        }, 750);
         setTimeout(() => {
           this.sharedFunc.displayToast(
             'Password is acceptable',
             'success',
             'green'
           );
-        }, 9000);
+        }, 900);
         if (this.user.img == '') {
           setTimeout(() => {
             this.sharedFunc.displayToast(
@@ -135,7 +125,7 @@ export class RegisterComponent implements OnInit {
               'blue'
             );
             this.router.navigateByUrl('/authorization');
-          }, 10500);
+          }, 1050);
         } else {
           setTimeout(() => {
             this.sharedFunc.displayToast(
@@ -143,7 +133,7 @@ export class RegisterComponent implements OnInit {
               'success',
               'green'
             );
-          }, 10500);
+          }, 1050);
           setTimeout(() => {
             this.sharedFunc.displayToast(
               'Redirect to authorization page',
@@ -151,7 +141,7 @@ export class RegisterComponent implements OnInit {
               'blue'
             );
             this.router.navigateByUrl('/authorization');
-          }, 11000);
+          }, 1100);
         }
       } else {
         if (this.user.name == '') {
@@ -228,6 +218,32 @@ export class RegisterComponent implements OnInit {
       this.passwordVisible = false;
       eye!.innerHTML = `<i class="far fa-eye-slash"></i>`;
       input?.setAttribute('type', 'password');
+    }
+  }
+  async uploadPhoto() {
+    let image = '';
+    const { value: file } = await Swal.fire({
+      title: 'Select image',
+      input: 'file',
+      inputAttributes: {
+        accept: 'image/*',
+        'aria-label': 'Upload your profile picture',
+      },
+    });
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        Swal.fire({
+          title: 'Your uploaded hotel picture',
+          imageUrl: e.target.result as any,
+          imageAlt: 'The uploaded picture',
+        });
+        image = e.target.result;
+        this.userImage = image;
+        this.acceptable = false;
+      };
+      reader.readAsDataURL(file);
     }
   }
 }
