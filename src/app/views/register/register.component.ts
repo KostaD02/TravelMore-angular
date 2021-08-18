@@ -30,9 +30,6 @@ export class RegisterComponent implements OnInit {
           this.usersArray.push(e.payload.doc.data());
         });
       });
-      this.sharedFunc.getIp().subscribe((result: any) => {
-        this.address = result.ip;
-      });
     }
   }
   createUser(form: NgForm) {

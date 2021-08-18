@@ -25,10 +25,7 @@ export class SharedFuncService {
       title: text,
     });
   }
-  getIp() {
-    return this.http.get('http://api.ipify.org/?format=json');
-    //Vinc ucenzuro tipis masalas atvirtavs shors ver wava :))
-  }
+
   numberToEnglish(n: any, custom_join_character: any) {
     let string = n.toString(),
       units,

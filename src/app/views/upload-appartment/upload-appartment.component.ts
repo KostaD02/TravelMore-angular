@@ -21,11 +21,7 @@ export class UploadAppartmentComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.SharedFuncService.getIp().subscribe((result: any) => {
-      this.address = result.ip;
-    });
-  }
+  ngOnInit(): void {}
   uploadHotel(form: NgForm) {
     this.secureUpload = false;
     let hotel = {};
