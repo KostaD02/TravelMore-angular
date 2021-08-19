@@ -34,7 +34,7 @@
                                     <th>Name</th>
                                     <th>Last Name</th>
                                     <th>Age</th>
-                                    <th>Gender</th>
+                                    <th>Type</th>
                                     <th>Email</th>
                                     <th>Password</th>
                                     <th>Check image</th>
@@ -48,8 +48,11 @@
                                     <td>{{user.name}}</td>
                                     <td>{{user.lastname}}</td>
                                     <td>{{user.age}}</td>
-                                    <td>{{user.gender}}</td>
-                                    <td>{{user.email}}</td>
+                                    <td>
+                                        <span *ngIf="user.type=='hotel'" style="color: #2574a9;">{{user.type}}</span>
+                                        <span *ngIf="user.type=='admin'" style="color:red">{{user.type}}</span>
+                                    </td>
+                                    <td class="maxContent">{{user.email}}</td>
                                     <td>{{user.password}}</td>
                                     <td class="center">
                                         <button class="btn btn-primary" (click)="viewImage(user.image,user.name)">Check

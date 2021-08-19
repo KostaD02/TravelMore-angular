@@ -46,3 +46,8 @@ aside i {
 .center {
   text-align: center;
 }
+.maxContent {
+  max-width: 258px !important;
+  overflow: hidden;
+  overflow-x: auto;
+}
